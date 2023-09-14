@@ -13,11 +13,11 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'cart', component: CartComponent },
   { path: 'details/:id', component: ProductDetailsComponent },
-  {path:'checkout',component:CheckoutComponent}
+  { path: 'checkout', component: CheckoutComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class UserRoutingModule { }
+export class UserRoutingModule {}

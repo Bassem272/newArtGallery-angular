@@ -1,1 +1,20 @@
 <p>login works!</p>
+<app-header></app-header>
+<div class="container">
+  <mat-card class="elevation-z24 logInCard">
+    <h2 id="title">Login</h2>
+    <form class="logInForm">
+      <mat-form-field>
+        <input matInput placeholder="Email" type="email" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Password" type="password" />
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" (click)="login()" routerLink="../../user/home">
+        Login
+      </button>
+    </form>
+   <div class="register"> <a id="resetPsd" href="">forget password?</a><a id="resetPsd" routerLink="../register">register ?</a>
+  </div>
+</mat-card>
+</div>

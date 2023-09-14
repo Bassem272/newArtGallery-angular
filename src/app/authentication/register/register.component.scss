@@ -1,0 +1,57 @@
+/* register.component.css */
+
+// .container {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center; /* Center horizontally */
+//   justify-content: center; /* Center vertically */
+//   height: 100vh; /* Make the container fill the viewport height */
+//   // background-image: url('your-pattern-image.jpg'); /* Add your pattern background */
+//   background-size: cover; /* Adjust background image size as needed */
+// }
+/* your-component.css */
+
+.container {
+  flex: 1;
+  display: flex;
+  // flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // background-image: url('your-pattern-image.jpg');
+  background-size: cover;
+  height: 25vh;
+  margin-top: 140px;
+  width:40vw;
+  padding: 20px;
+
+}
+
+form{
+
+  display: grid;
+  grid-template-rows: fr fr fr fr;
+  width: 30vw;
+  padding: 15px;
+}
+.elements{
+  background-color: aqua;
+
+}
+h2{
+// background-color: ;
+background-color: aqua;
+text-align: center;
+font-size: 20px;
+font-weight: 400;
+}
+
+.logInForm{
+  background-color: aqua;
+  display: grid;
+  grid-template-rows: 1fr 1fr ;
+  width: 30vw;
+  padding:15px;
+  border-radius: 10px;
+  box-shadow: 0 0 3px 3px rgba(0,0,0,0.2);
+
+}

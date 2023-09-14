@@ -1,0 +1,14 @@
+.spacer
+{
+  flex-grow: 1;
+}
+mat-toolbar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+}
+button{
+  margin:10px;
+}

@@ -7,8 +7,8 @@ import { ProductDetailsComponent } from './user/product-details/product-details.
 import { ProfileComponent } from './user/profile/profile.component';
 import { CheckoutComponent } from './user/checkout/checkout.component';
 
-const routes: Routes = [ 
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+const routes: Routes = [
+  // { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'user', loadChildren: () => import('./user/user.module').then((m) => m.UserModule) },
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule) },
   { path: 'auth', loadChildren: () => import('./authentication/authentication.module').then((m) => m.AuthenticationModule) },
