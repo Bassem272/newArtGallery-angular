@@ -25,3 +25,46 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+ng generate module shared --routing 
+ng generate module admin --routing 
+ng generate module user --routing 
+ng generate module authentication --routing
+
+ng generate component user/home --module=user 
+ng generate component user/products --module=user 
+ng generate component user/profile --module=user 
+ng generate component user/cart --module=user 
+ng generate component user/checkout --module=user 
+ng generate component user/product-details --module=user 
+ng generate component authentication/login --module=authentication 
+ng generate component authentication/logout --module=authentication 
+ng generate component authentication/register --module=authentication 
+
+ng generate component shared/header --module=shared 
+ng generate component shared/footer --module=shared 
+ng generate component shared/admin-header --module=shared 
+ng generate component shared/admin-footer --module=shared 
+ng generate component shared/admin-sidenav --module=shared 
+
+
+ng generate component admin/dashboard --module=admin
+ng generate component admin/customers --module=admin
+ng generate component admin/products --module=admin
+ng generate component admin/orders --module=admin 
+
+
+Install Angular Material:
+
+Install Font Awesome:
+ng add @angular/material
+npm install bootstrap
+npm install @fortawesome/fontawesome-svg-core
+npm install @fortawesome/free-brands-svg-icons
+npm install @fortawesome/free-regular-svg-icons
+npm install @fortawesome/free-solid-svg-icons
+npm install @fortawesome/fontawesome-free
+npm install @fortawesome/angular-fontawesome
+After installing these packages, you can import them in your Angular project as needed. For example, to use Font Awesome icons, you can add the following line to your styles.scss file:
+@import '~@fortawesome/fontawesome-free/css/all.css';
