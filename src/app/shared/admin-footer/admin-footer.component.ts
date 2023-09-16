@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-footer.component.scss']
 })
 export class AdminFooterComponent {
+test: string | number | Date | undefined;
 
 }

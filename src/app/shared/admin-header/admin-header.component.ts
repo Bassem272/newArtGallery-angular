@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-header.component.scss']
 })
 export class AdminHeaderComponent {
-
+  search()
+  {}
+  searchQuery:any | undefined;
 }

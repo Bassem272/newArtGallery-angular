@@ -2,18 +2,38 @@
 <app-header></app-header>
 <div class="container">
   <mat-card mat-card-image class="elevation-z24 regCard">
-<h2  color="primary" >Register</h2>
-  <form class="logInForm">
+<h2  color="primary" >Sign up now </h2>
+  <form class="logInForm"  [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="elements">
-      <input matInput placeholder="Username" type="text">
+      <input matInput placeholder="Username" type="text" formControlName="username">
+      <mat-error *ngIf="registerForm?.get('username')?.hasError('required')">Username is required</mat-error>
     </mat-form-field>
     <mat-form-field class="elements">
-      <input matInput placeholder="Email" type="email">
+      <input matInput placeholder="Email" type="email" formControlName="email">
+      <mat-error *ngIf="registerForm?.get('email')?.hasError('required')">email is required</mat-error>
+      <mat-error *ngIf="registerForm.get('email')?.hasError('email')">Invalid email format.</mat-error>
     </mat-form-field>
     <mat-form-field class="elements">
-      <input matInput placeholder="Password" type="password">
+      <input matInput placeholder="Password" type="password" formControlName="password">
+      <mat-error *ngIf="registerForm?.get('password')?.hasError('required')">password is required</mat-error>
+      <mat-error *ngIf="registerForm.get('password')?.hasError('pattern')">
+        Password must contain at least 8 characters, including letters and numbers.
+      </mat-error>
     </mat-form-field  >
-    <button  class="elements"mat-raised-button color="primary" type="submit">Register</button>
+    <button  id='regBtn'class="elements"mat-raised-button color="primary" type="submit">Register</button>
   </form>
+</mat-card>
+
+<!-- Error messages card or div -->
+<mat-card *ngIf="hasErrors()" class="error-card">
+  <div class="error-messages">
+    <mat-error *ngIf="registerForm.get('username')?.hasError('required')">*Username is required.</mat-error>
+    <mat-error *ngIf="registerForm.get('email')?.hasError('required')">*Email is required.</mat-error>
+    <mat-error *ngIf="registerForm.get('email')?.hasError('email')">*Invalid email format.</mat-error>
+    <mat-error *ngIf="registerForm.get('password')?.hasError('required')">*Password is required.</mat-error>
+    <mat-error *ngIf="registerForm.get('password')?.hasError('pattern')">
+      *Password must contain at least 8 characters, including letters and numbers.
+    </mat-error>
+  </div>
 </mat-card>
 </div>

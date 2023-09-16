@@ -25,6 +25,11 @@
   text-align: center;
   font-size: 20px;
   font-weight: 400;
+  box-shadow: 0 0 3px 3px rgba(139, 96, 96, 0.2);
+  font-family: 'Roboto', sans-serif;
+ font-size:x-large;
+ font-weight: 450;
+ color:rgb(63,81,181)
 
 }
 .logInCard{
@@ -44,5 +49,6 @@
   justify-content: space-between;
 }
 .error-card{
-  width:33vw;
+  width:32vw;
+  box-shadow: 0 0 3px 3px rgba(139, 96, 96, 0.2);
 }

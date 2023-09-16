@@ -1,0 +1,111 @@
+/* Container for the entire card */
+.mat-card {
+  margin: 20px;
+  padding: 20px;
+}
+
+/* Header style for the cart */
+.mat-card-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Divider style */
+mat-divider {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Styling for individual cart items */
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Quantity controls */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-controls button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.quantity-controls button:hover {
+  background-color: #f0f0f0;
+}
+
+.quantity-controls span {
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+/* Styling for total price */
+mat-card-content:last-child {
+  margin-top: 20px;
+  text-align: right;
+}
+
+/* Checkout button style */
+mat-card-content:last-child button {
+  margin-top: 10px;
+}
+
+/* Gradient background */
+.gradient-custom {
+  margin-bottom: 20vh;
+  background: #6a11cb;
+  background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+  background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+}
+
+/* Container styles */
+.container {
+  display: block;
+  background-color: #cbc1d5;
+  max-height: 100%;
+
+}
+.secondContainer {
+  display: block;
+  background-color: #6a11cb;
+  max-height: 100%; 
+   display: grid;
+grid-template-areas: 1fr 1fr;
+grid-row-gap: 10px;
+  // flex-direction: row;
+  // width: fit-content;
+  // height:fit-content;
+}
+
+#fir{
+  // background-color: #6a11cb;
+}
+#firr{
+  // background-color: aqua;
+  display: flex;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#firrr{
+  // background-color: rgb(6, 22, 22);
+}
+.item-card{
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 0 3px 3px rgba(0,0,0,0.2);  margin-bottom: 15px;
+
+}
+.gocheck{
+  width:20vw;
+  background-color: red;
+
+ 
+}
+

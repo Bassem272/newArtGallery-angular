@@ -19,13 +19,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from '../shared/shared.module';
 
-
 @NgModule({
   declarations: [
     DashboardComponent,
     CustomersComponent,
     ProductsComponent,
-    OrdersComponent
+    OrdersComponent,
   ],
   imports: [
     CommonModule,
@@ -41,7 +40,7 @@ import { SharedModule } from '../shared/shared.module';
     MatIconModule,
     MatInputModule,
     MatSidenavModule,
-    MatGridListModule
-  ]
+    MatGridListModule,
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}

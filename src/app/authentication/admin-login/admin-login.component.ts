@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators  } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/authentication-service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'app-admin-login',
+  templateUrl: './admin-login.component.html',
+  styleUrls: ['./admin-login.component.scss']
 })
-export class LoginComponent {
-
-
+export class AdminLoginComponent {
   loginForm: FormGroup;
 
   constructor(private authService: AuthenticationService, private formBuilder : FormBuilder) {

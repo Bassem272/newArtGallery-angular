@@ -1,0 +1,13 @@
+/* footer.component.scss */
+.mat-toolbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px; /* Adjust the height as needed */
+  color: white; /* Text color */
+}

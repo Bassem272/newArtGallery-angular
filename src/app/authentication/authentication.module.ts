@@ -12,20 +12,27 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SharedModule } from '../shared/shared.module';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     LogoutComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdminLoginComponent,
   ],
   imports: [
     CommonModule,
-    AuthenticationRoutingModule, MatButtonModule,
+    AuthenticationRoutingModule,
+    MatButtonModule,
     MatInputModule,
-    MatToolbarModule,MatFormFieldModule,
-    MatCardModule,MatIconModule,SharedModule
-  ]
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatIconModule,
+    SharedModule,
+    ReactiveFormsModule,
+  ],
 })
-export class AuthenticationModule { }
+export class AuthenticationModule {}

@@ -1,1 +1,8 @@
 <p>admin-header works!</p>
+<mat-toolbar color="primary" class="custom-toolbar">
+  <span>My App</span>
+  <button mat-button routerLink="/register">products</button>
+  <button mat-button class="mat-warn" routerLink="/login">customers</button>
+  <span class="spacer"></span> <!-- Remove id and add class -->
+  <button mat-button routerLink="/reset-password"> Orders </button>
+</mat-toolbar>

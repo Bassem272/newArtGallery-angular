@@ -1,2 +1,131 @@
 <p>cart works!</p>
 <app-header></app-header>
+<!-- <mat-icon>linkedin</mat-icon>
+<mat-icon>Twitter</mat-icon> -->
+<mat-card>
+  <mat-card-title>Shopping Cart</mat-card-title>
+  <mat-divider></mat-divider>
+  <mat-divider></mat-divider>
+
+  <!-- <div *ngFor="let item of cartItems">
+    <mat-card-content>
+      <p>{{ item.name }}</p>
+      <p>Color: {{ item.color }}</p>
+      <p>Size: {{ item.size }}</p>
+
+      Quantity controls
+      <div class="quantity-controls">
+        <button mat-icon-button (click)="decreaseQuantity(item)">
+          <mat-icon>remove</mat-icon>
+        </button>
+        <span>{{ item.quantity }}</span>
+        <button mat-icon-button (click)="increaseQuantity(item)">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      Quantity controls
+
+      <p>Total Price: {{ item.price * item.quantity | currency:'USD':'symbol' }}</p>
+    </mat-card-content>
+  </div> -->
+
+  <mat-divider></mat-divider>
+
+  <mat-divider></mat-divider>
+
+  <section class="h-100 gradient-custom">
+
+    <div class="container py-5">
+      <div class="row d-flex justify-content-center my-4 secondContainer">
+
+
+
+        <div class="col-md-8">
+          <div class="card mb-4">
+            <div class="card-header py-3">
+              <h5 class="mb-0">Cart - {{ cartItems.length }} items</h5>
+            </div>
+            <div class="card-body">
+              <ng-container *ngFor="let item of cartItems">
+              <!-- Single item -->
+<mat-card class="item-card">
+  <div class="row mb-4">
+    <div class="col-lg-3 col-md-12">
+      <mat-card id="fir">
+        <img src="{{ item.imageUrl }}" class="w-100" alt="{{ item.name }}" />
+      </mat-card>
+    </div>
+    <div class="col-lg-5 col-md-6">
+      <mat-card id="firr">
+        <mat-card-content>
+          <p><strong>{{ item.name }}</strong></p>
+          <p>Color: {{ item.color }}</p>
+          <p>Size: {{ item.size }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-lg-4 col-md-6">
+      <mat-card id="firrr">
+        <mat-card-content>
+          <!-- Quantity controls -->
+          <div class="quantity-controls">
+            <button mat-icon-button (click)="decreaseQuantity(item)">
+              <mat-icon>remove</mat-icon>
+            </button>
+            <span>{{ item.quantity }}</span>
+            <button mat-icon-button (click)="increaseQuantity(item)">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+          <!-- Quantity controls -->
+          <p><strong>{{ item.price | currency:'USD':'symbol' }}</strong></p>
+          <p>Total Price: {{ item.price * item.quantity | currency:'USD':'symbol' }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</mat-card>
+<!-- Single item -->
+
+              </ng-container>
+
+              <hr class="my-4" />
+
+              <!-- Summary card -->
+              <mat-card>
+                <mat-card-header>
+                  <mat-card-title>Summary</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <mat-list>
+                    <mat-list-item>
+                      <div mat-line>Products</div>
+                      <div mat-line>Total: {{ getTotalCost() | currency:'USD':'symbol' }}</div>
+                    </mat-list-item>
+                    <mat-list-item>
+                      <div mat-line>Shipping</div>
+                      <div mat-line>Gratis</div>
+                    </mat-list-item>
+                  </mat-list>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-raised-button color="primary" class="btn-lg btn-block" routerLink="/user/checkout">Go to checkout</button>
+                </mat-card-actions>
+              </mat-card>
+              <!-- Summary card -->
+              <mat-card id="gocheck">
+                <mat-card-content>
+                  <p>Total: {{ getTotalPrice() | currency:'USD':'symbol' }}</p>
+                  <button id="checkout-btn" mat-raised-button color="primary" routerLink="/user/checkout">Checkout</button>
+                </mat-card-content>
+
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</mat-card>
+
+<app-footer></app-footer>

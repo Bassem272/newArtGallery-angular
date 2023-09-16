@@ -1,0 +1,120 @@
+/* Reset default styles and set up basic styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f7f7f7; /* Light background color */
+  color: #333; /* Default text color */
+}
+
+.dashboard {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidenav Styles */
+.mat-sidenav {
+  width: 250px;
+  background-color: #fff; /* Sidenav background color */
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo-name {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0; /* Sidenav separator */
+}
+
+.logo-image img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.logo_name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.nav-links {
+  padding: 10px 0;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #f0f0f0; /* Hover background color */
+}
+
+/* Add more styles for other sections */
+
+/* Sidenav Footer Styles */
+.logout-mode {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.mode {
+  display: flex;
+  align-items: center;
+}
+
+/* Sidenav Toggle Switch Styles */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 25px;
+}
+
+.switch:before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+/* Dark Mode Styles */
+body.dark {
+  background-color: #333; /* Dark background color */
+  color: #fff; /* Dark text color */
+}
+
+.mat-sidenav.dark {
+  background-color: #111; /* Dark Sidenav background color */
+}
+
+/* Other styles for top and dash-content sections */
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .mat-sidenav {
+    width: 73px; /* Collapsed Sidenav width */
+  }
+  /* Add styles for collapsed Sidenav */
+}
+
+/* Add more media queries for further responsiveness */

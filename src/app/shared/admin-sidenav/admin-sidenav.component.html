@@ -1,1 +1,103 @@
 <p>admin-sidenav works!</p>
+<div class="dashboard">
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side" [opened]="!isSidenavOpen">
+      <div class="logo-name">
+        <div class="logo-image">
+          <img src="images/logo.png" alt="">
+        </div>
+        <span class="logo_name">Artwork Administration Portal</span>
+      </div>
+      <div class="nav-links">
+        <a class="nav-link" href="#" (click)="navigateTo('Dashboard')">
+          <mat-icon>estate</mat-icon>
+          <span class="link-name">Dashboard</span>
+        </a>
+        <a class="nav-link" href="#" (click)="navigateTo('Content')">
+          <mat-icon>files-landscapes</mat-icon>
+          <span class="link-name">Content</span>
+        </a>
+        <a class="nav-link" href="#" (click)="navigateTo('Analytics')">
+          <mat-icon>chart</mat-icon>
+          <span class="link-name">Analytics</span>
+        </a>
+        <a class="nav-link" href="#" (click)="navigateTo('Like')">
+          <mat-icon>thumbs-up</mat-icon>
+          <span class="link-name">Like</span>
+        </a>
+        <a class="nav-link" href="#" (click)="navigateTo('Comment')">
+          <mat-icon>comments</mat-icon>
+          <span class="link-name">Comment</span>
+        </a>
+        <a class="nav-link" href="#" (click)="navigateTo('Share')">
+          <mat-icon>share</mat-icon>
+          <span class="link-name">Share</span>
+        </a>
+      </div>
+      <div class="logout-mode">
+        <a class="nav-link" href="#" (click)="navigateTo('Logout')">
+          <mat-icon>signout</mat-icon>
+          <span class="link-name">Logout</span>
+        </a>
+        <div class="mode">
+          <a class="nav-link" href="#" (click)="toggleDarkMode()">
+            <mat-icon>moon</mat-icon>
+            <span class="link-name">Dark Mode</span>
+          </a>
+          <div class="mode-toggle">
+            <span class="switch"></span>
+          </div>
+        </div>
+      </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div class="top">
+        <button mat-icon-button (click)="toggleSidenav()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <!-- <div class="search-box">
+          <mat-icon>search</mat-icon>
+          <input type="text" placeholder="Search here..." [(ngModel)]="searchQuery">
+        </div> -->
+        <img src="images/profile.jpg" alt="">
+      </div>
+
+      <!-- <div class="dash-content">
+        <div class="overview">
+          <div class="title">
+            <mat-icon>tachometer-fast-alt</mat-icon>
+            <span class="text">Dashboard</span>
+          </div>
+          <div class="boxes">
+            <div class="box box1">
+              <mat-icon>thumbs-up</mat-icon>
+              <span class="text">Total Likes</span>
+              <span class="number">50,120</span>
+            </div>
+            <div class="box box2">
+              <mat-icon>comments</mat-icon>
+              <span class="text">Comments</span>
+              <span class="number">20,120</span>
+            </div>
+            <div class="box box3">
+              <mat-icon>share</mat-icon>
+              <span class="text">Total Share</span>
+              <span class="number">10,120</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity">
+          <div class="title">
+            <mat-icon>clock-three</mat-icon>
+            <span class="text">Recent Activity</span>
+          </div>
+          <div class="activity-data">-->
+            <!-- Recent activity data here
+          </div>
+        </div>
+      </div> -->
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { UserModule } from './user/user.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { UserModule } from './user/user.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,UserModule,SharedModule,AuthenticationModule
+    BrowserAnimationsModule,UserModule,SharedModule,AuthenticationModule,ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
