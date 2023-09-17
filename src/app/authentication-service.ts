@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthenticationService {
+  setToken(arg0: string, token: any) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor() { }
   private loggedIn = false; // Initialize as false when the user is not logged in

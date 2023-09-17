@@ -1,1 +1,40 @@
 <p>products works!</p>
+<app-admin-header></app-admin-header>
+<!-- <app-admin-sidenav></app-admin-sidenav> -->
+<div class="container" >
+  <h1>Product Management</h1>
+  <button mat-raised-button color="accent"(click)="addProduct()">Add Product</button>
+
+  <!-- Grid layout for products -->
+  <div class="card-container">
+    <mat-card *ngFor="let product of products">
+      <h2>{{ product.name }}</h2>
+      <p>{{ product.description }}</p>
+      <button mat-raised-button color="primary" (click)="editProduct(product)">Edit</button>
+      <mat-divider></mat-divider>
+      <button mat-raised-button color="warn" (click)="deleteProduct(product)">Delete</button>
+
+      <!-- Add form for editing product data -->
+      <div *ngIf="product.editing">
+        <form (submit)="confirmEdit(product)">
+          <mat-form-field>
+            <input matInput [(ngModel)]="product.name" name="name" placeholder="Name" required>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea matInput [(ngModel)]="product.description" name="description" placeholder="Description" required></textarea>
+          </mat-form-field>
+          <button mat-button color="primary" type="submit">Confirm</button>
+          <button mat-button color="accent" (click)="cancelEdit(product)">Cancel</button>
+        </form>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- Search results for products -->
+  <div class="search-results" *ngIf="searchResults.length > 0">
+    <div class="search-result" *ngFor="let result of searchResults" (click)="selectProduct(result)">
+      {{ result.name }}
+    </div>
+  </div>
+</div>
+<app-admin-footer></app-admin-footer>

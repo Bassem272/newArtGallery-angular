@@ -25,7 +25,6 @@
 </mat-card>
 <mat-card *ngIf="hasErrors()"class="error-card">
   <div class="error-messages">
-    <mat-error *ngIf="loginForm.get('username')?.hasError('required')">*Username is required.</mat-error>
     <mat-error *ngIf="loginForm.get('email')?.hasError('required')">*Email is required.</mat-error>
     <mat-error *ngIf="loginForm.get('email')?.hasError('email')">*Invalid email format.</mat-error>
     <mat-error *ngIf="loginForm.get('password')?.hasError('required')">*Password is required.</mat-error>

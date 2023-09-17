@@ -1,3 +1,87 @@
 <p>products works!</p>
 <app-header></app-header>
+
+<div class="contain">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>Shiba Inu</mat-card-title>
+        <mat-card-subtitle>Extra large</mat-card-subtitle>
+        <img mat-card-xl-image src="../../../assets/betterHalfReality.png" >
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </mat-card-content>
+  </mat-card>
+  </div>
+   <div id="artTitle">Use Angular Material cards to display featured artworks </div>
+
+  <section class="featured-artworks grid">
+   <mat-card *ngFor="let artwork of featuredArtworks" class="artwork-card">
+      <img mat-card-image [src]="artwork.image" alt="{{ artwork.name }}">
+      <div class="overlay" *ngIf="elevation === 8">
+        <button mat-button color="primary" (click)="viewArtworkDetails(artwork.id)">View Details</button>
+      </div>
+      <mat-card-title>{{ artwork.name }}</mat-card-title>
+      <mat-card-subtitle>{{ artwork.price }}</mat-card-subtitle>
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="viewArtworkDetails(artwork.id)" >View Details</button>
+      </mat-card-actions>
+    </mat-card>
+  </section>
+
+  <section class="featured-artworks grid">
+
+  <mat-card *ngFor="let artwork of featuredArtworks" class="artwork-card mat-elevation-z2"
+   (mouseover)="elevation = 8" (mouseleave)="elevation = 2"
+   [class.mat-elevation-z8]="elevation === 8">
+
+    <img mat-card-image [src]="artwork.image" alt="{{ artwork.name }}">
+
+    <div class="overlay" *ngIf="elevation === 8">
+      <button id="view-btn" mat-button color="primary" class="mat-warn"
+      (click)="viewArtworkDetails(artwork.id)">View Details</button>
+      <button id="add-btn" mat-button color="primary"
+       (click)="addToCart(artwork)">add to cart <mat-icon>shopping_cart</mat-icon></button>
+    </div>
+    <mat-card-title>{{ artwork.name }}</mat-card-title>
+    <mat-card-subtitle>{{ artwork.price}}</mat-card-subtitle>
+    <mat-card-actions>
+      <button mat-button color="primary" (click)="viewArtworkDetails(artwork.id)">View Details</button>
+    </mat-card-actions>
+  </mat-card>
+  </section>
+  <!--  ...........................................
+   <section class="featured-artworks grid">
+    <mat-card *ngFor="let artwork of featuredArtworks"   (mouseenter)="onCardMouseEnter(product)"
+    (mouseleave)="onCardMouseLeave(product)"
+    [ngClass]="{'elevated': artwork.isHovered}">
+      <img mat-card-image [src]="artwork.image" alt="{{ artwork.name }}">
+      <div class="overlay" *ngIf="elevation === 8">
+        <button id="view-btn" mat-button color="primary" (click)="viewArtworkDetails(artwork.id)">View Details</button>
+
+<app-footer></app-footer>-->
+
+<!--  ........................................... -->
+<div id="artTitle">Use paginator Angular Material cards to display featured artworks </div>
+<section class="featured-artworks grid">
+  <mat-card *ngFor="let artwork of dataSource.data" class="artwork-card mat-elevation-z2" (mouseover)="elevation= 8" (mouseleave)="elevation= 2" [class.mat-elevation-z8]="elevation=== 8">
+    <img mat-card-image [src]="artwork.image" alt="{{ artwork.name }}">
+    <div class="overlay" *ngIf="elevation=== 8">
+      <button id="view-btn" mat-button color="primary" (click)="viewArtworkDetails(artwork.id)">View Details</button>
+      <button id="add-btn" mat-button color="primary" (click)="addToCart(artwork)">add to cart <mat-icon>shopping_cart</mat-icon></button>
+    </div>
+    <mat-card-title>{{ artwork.name }}</mat-card-title>
+    <mat-card-subtitle>{{ artwork.price }}</mat-card-subtitle>
+    <mat-card-actions>
+      <button mat-button color="primary" (click)="viewArtworkDetails(artwork.id)">View Details</button>
+    </mat-card-actions>
+  </mat-card>
+
+<mat-paginator [length]="featuredArtworks.length"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="onPageChange($event)">
+</mat-paginator>
+  </section>
 <app-footer></app-footer>

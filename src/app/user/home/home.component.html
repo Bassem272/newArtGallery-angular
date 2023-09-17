@@ -2,6 +2,302 @@
 <a href="#" class="text-white me-4">
   <mat-icon>twitter</mat-icon>
 </a>
-<app-header></app-header>
-<app-footer></app-footer>
 
+<app-header></app-header>
+<div class="conta">
+<div
+  id="carouselExampleControls"
+  class="carousel slide"
+  data-bs-ride="carousel"
+>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img
+        src="../../../assets/authorWrath.png"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="../../../assets/heavevbarier.png"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="../../../assets//background-6556413_1280.jpg"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+  </div>
+
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExampleControls"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExampleControls"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div><div
+id="carouselExampleControls"
+class="carousel slide"
+data-bs-ride="carousel"
+>
+<div class="carousel-inner">
+  <div class="carousel-item active">
+    <img
+      src="../../../assets/milky-way-2695569_1280.jpg"
+      class="d-block w-100"
+      alt="..."
+    />
+  </div>
+  <div class="carousel-item">
+    <img
+      src="../../../assets/beach.png"
+      class="d-block w-100"
+      alt="..."
+    />
+  </div>
+  <div class="carousel-item">
+    <img
+      src="../../../assets/betterHalfReality.png"
+      class="d-block w-100"
+      alt="..."
+    />
+  </div>
+</div>
+
+<button
+  class="carousel-control-prev"
+  type="button"
+  data-bs-target="#carouselExampleControls"
+  data-bs-slide="prev"
+>
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Previous</span>
+</button>
+<button
+  class="carousel-control-next"
+  type="button"
+  data-bs-target="#carouselExampleControls"
+  data-bs-slide="next"
+>
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Next</span>
+</button>
+</div>
+<div
+id="carouselExampleControls"
+class="carousel slide"
+data-bs-ride="carousel"
+>
+<div class="carousel-inner">
+  <div class="carousel-item active">
+    <img
+      src="../../../assets/enterHeaven.png"
+      class="d-block w-100"
+      alt="..."
+    />
+  </div>
+  <div class="carousel-item">
+    <img
+      src="../../../assets/smallworld.png"
+      class="d-block w-100"
+      alt="..."
+    />
+  </div>
+  <div class="carousel-item">
+    <img
+      src="../../../assets/nature.png"
+      class="d-block w-100"
+      alt="..."
+    />
+  </div>
+</div>
+
+<button
+  class="carousel-control-prev"
+  type="button"
+  data-bs-target="#carouselExampleControls"
+  data-bs-slide="prev"
+>
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Previous</span>
+</button>
+<button
+  class="carousel-control-next"
+  type="button"
+  data-bs-target="#carouselExampleControls"
+  data-bs-slide="next"
+>
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Next</span>
+</button>
+</div>
+<div
+id="carouselExampleControls"
+class="carousel slide"
+data-bs-ride="carousel"
+>
+<div class="carousel-inner">
+  <div class="carousel-item active">
+    <img
+      src="../../../assets/enterHeaven.png"
+      class="d-block w-100"
+      alt="..."
+    />
+  </div>
+  <div class="carousel-item">
+    <img
+      src="../../../assets/smallworld.png"
+      class="d-block w-100"
+      alt="..."
+    />
+  </div>
+  <div class="carousel-item">
+    <img
+      src="../../../assets/nature.png"
+      class="d-block w-100"
+      alt="..."
+    />
+  </div>
+</div>
+
+<button
+  class="carousel-control-prev"
+  type="button"
+  data-bs-target="#carouselExampleControls"
+  data-bs-slide="prev"
+>
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Previous</span>
+</button>
+<button
+  class="carousel-control-next"
+  type="button"
+  data-bs-target="#carouselExampleControls"
+  data-bs-slide="next"
+>
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Next</span>
+</button>
+</div>
+</div>
+
+<div class="home-container">
+  <!-- Header Section -->
+  <header class="header">
+    <h1>Welcome to Our Art Gallery</h1>
+    <p>Explore and Discover Art from Around the World</p>
+  </header>
+
+  <!-- Gallery Introduction Section -->
+  <section class="gallery-introduction">
+    <h2>Gallery Introduction</h2>
+    <p>
+      Welcome to our art gallery. We are dedicated to showcasing the finest art
+      from around the world. Explore our collection and find inspiration.
+    </p>
+  </section>
+
+  <!-- Featured Artworks Section -->
+  <section class="featured-artworks grid">
+    <mat-card
+      *ngFor="let artwork of featuredArtworks"
+      class="artwork-card"
+      (mouseenter)="showOverlay = true"
+      (mouseleave)="showOverlay = false"
+    >
+      <img mat-card-image [src]="artwork.image" alt="{{ artwork.title }}" />
+      <mat-card-title>{{ artwork.title }}</mat-card-title>
+      <mat-card-subtitle>{{ artwork.artist }}</mat-card-subtitle>
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="addToCart(artwork.id)">
+          <mat-icon>add_shopping_cart</mat-icon> Add to Cart
+        </button>
+        <button
+          mat-button
+          color="primary"
+          (click)="viewArtworkDetails(artwork.id)"
+        >
+          View Details
+        </button>
+      </mat-card-actions>
+      <div class="overlay" [@overlayAnimation]="showOverlay">
+        <button mat-button color="primary" (click)="addToCart(artwork.id)">
+          <mat-icon>add_shopping_cart</mat-icon> Add to Cart
+        </button>
+        <button
+          mat-button
+          color="primary"
+          (click)="viewArtworkDetails(artwork.id)"
+        >
+          View Details
+        </button>
+      </div>
+    </mat-card>
+  </section>
+
+
+  <!-- Upcoming Exhibitions Section -->
+  <section class="upcoming-exhibitions">
+    <h2>Upcoming Exhibitions</h2>
+    <div class="exhibition-panels">
+      <mat-expansion-panel *ngFor="let exhibition of upcomingExhibitions">
+        <mat-expansion-panel-header>{{
+          exhibition.name
+        }}</mat-expansion-panel-header>
+        <p>{{ exhibition.description }}</p>
+        <mat-action-row>
+          <button mat-button color="primary">Learn More</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </div>
+  </section>
+
+  <!-- Artists Spotlight Section -->
+  <section class="artists-spotlight">
+    <h2>Artists Spotlight</h2>
+    <div class="artist-cards">
+      <mat-card *ngFor="let artist of featuredArtists" class="artist-card">
+        <img mat-card-image [src]="artist.image" alt="{{ artist.name }}" />
+        <mat-card-title>{{ artist.name }}</mat-card-title>
+        <mat-card-actions>
+          <button mat-button color="primary">View Portfolio</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonial-cards">
+      <mat-card
+        *ngFor="let testimonial of testimonials"
+        class="testimonial-card"
+      >
+        <p>{{ testimonial.text }}</p>
+        <p>
+          <strong>{{ testimonial.author }}</strong>
+        </p>
+      </mat-card>
+    </div>
+  </section>
+</div>
+
+<app-footer></app-footer>

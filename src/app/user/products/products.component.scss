@@ -1,0 +1,334 @@
+/* home.component.css */
+
+/* Featured Artworks Section */
+.featured-artworks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.artwork-card {
+  width: calc(33.33% - 20px);
+  margin-bottom: 20px;
+}
+
+/* Style card images */
+.mat-card-image {
+  height: 200px; /* Adjust image height */
+  object-fit: cover; /* Maintain aspect ratio and cover the card */
+}
+
+/* Center card title and subtitle */
+.mat-card-title,
+.mat-card-subtitle {
+  text-align: center;
+}
+
+/* Gallery Introduction Section */
+.gallery-introduction {
+  text-align: center;
+  margin: 20px;
+}
+
+/* Upcoming Exhibitions Section */
+.upcoming-exhibitions {
+  margin: 20px;
+}
+
+/* Artists Spotlight Section */
+.artists-spotlight {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-between;
+  margin: 2px;
+}
+
+.artist-card {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+/* Style artist card images */
+.artist-card .mat-card-image {
+  height: 200px; /* Adjust image height */
+  object-fit: cover; /* Maintain aspect ratio and cover the card */
+
+height: 200px; /* Adjust image height */
+object-fit: cover; /* Maintain aspect ratio and cover the card */
+}
+
+/* Center artist card title */
+.artist-card .mat-card-title {
+  text-align: center;
+}
+
+/* Testimonials Section */
+.testimonials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.testimonial-card {
+  width: calc(50% - 20px);
+  margin-bottom: 20px;
+}
+
+/* Add styles for button hover effect */
+button.mat-button {
+  transition: background-color 0.3s ease;
+}
+
+button.mat-button:hover {
+  background-color: #007bff; /* Change to your desired hover color */
+  color: #fff; /* Change to text color on hover */
+}
+
+/* Add styles for links */
+a {
+  color: #007bff; /* Link color */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #0056b3; /* Link color on hover */
+}
+.artwork-card {
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+}
+
+.artwork-card:hover {
+  transform: scale(1.05);
+}
+
+.artwork-card .mat-card-actions {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.artwork-card:hover .mat-card-actions {
+  opacity: 1;
+}
+h2{
+  display:inline-block;
+}
+
+/* Add this CSS to your component's styles or global styles */
+.artwork-item {
+  display: flex; /* Use flexbox to arrange items horizontally */
+  flex-direction: column; /* Arrange items vertically within each tile */
+  align-items: center; /* Center items horizontally within each tile */
+}
+
+.artwork-image {
+  width: 100%; /* Set the width to 100% to fit within the grid tile */
+  height: auto; /* Maintain the aspect ratio of the images */
+  max-width: 100%; /* Ensure images don't exceed the tile's width */
+  max-height: 100%; /* Ensure images don't exceed the tile's height */
+}
+
+.artwork-details {
+  flex-grow: 1; /* Allow details to grow and take available space */
+  text-align: center; /* Center-align text within the details div */
+  padding: 8px; /* Add padding for spacing */
+}
+.d-block,.carousel-inner {
+  height:500px;
+  width:80vw;
+}
+.carousel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+.artwork-card {
+  position: relative;
+  // display: grid;
+  // grid-template-columns:fr fr fr ;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color:gold;
+}
+
+#view-btn,#add-btn{
+  background-color: rgb(56, 56, 198) ;
+
+  color:gold;
+
+margin-bottom: 5px;
+font-size: 2ch;
+
+}
+.artwork-card {
+
+}
+
+.artwork-card img {
+  grid-row: 1 / -1;
+  object-fit: cover;
+  height: 400px;
+}
+
+// flipping cards
+.card {
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 25rem;
+  width: 100%;
+  transition: all ease-in-out 5s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card:active {
+  transform: translateY(-1px);
+}
+
+.card__side {
+  transition: all 0.8s ease;
+  color: white;
+  font-size: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25rem;
+  width: 100%;
+  backface-visibility: hidden;
+  box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+}
+
+.card__side--front {
+  background-color: #2196f3;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card__side--back {
+  background-color: #303f9f;
+  transform: rotateY(180deg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.showGreen {
+  transform: rotateY(-180deg);
+}
+
+.showRed {
+  transform: rotateY(0);
+}
+
+.text-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+}
+
+.text-box-top {
+  font-size: 2.2rem;
+  text-shadow: 2px 2px 10px #0000006c;
+  font-weight: 400;
+}
+
+.text-box-middle {
+  font-size: 5.5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 10px #0000006c;
+}
+
+.text-box-lower {
+  font-size: 2rem;
+  text-shadow: 2px 2px 10px #0000006c;
+  font-weight: 400;
+}
+
+.heading {
+  transition: all 0.6s linear;
+}
+
+.hide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+#front-1 {
+  background-image: linear-gradient(
+      rgba(204, 30, 88, 0.6),
+      rgba(20, 20, 20, 0.6)
+    ),
+    url("https://images.unsplash.com/photo-1527529482837-4698179dc6ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=80");
+}
+#front-2 {
+  background-image: linear-gradient(
+      rgba(31, 136, 168, 0.767),
+      rgba(14, 46, 65, 0.9)
+    ),
+    url("https://images.unsplash.com/photo-1508599804355-8ce5238b44b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=80");
+}
+
+ #artTitle{
+  display: block;
+ }
+.contain{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+/* Animation for the overlay layer */
+@keyframes overlayAnimation {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+

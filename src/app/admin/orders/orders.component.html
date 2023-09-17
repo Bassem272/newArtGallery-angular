@@ -1,1 +1,55 @@
 <p>orders works!</p>
+<app-admin-header></app-admin-header>
+<!-- <app-admin-sidenav></app-admin-sidenav> -->
+<div>
+  <h1>Order Management</h1>
+  <button (click)="addOrder()">Add Order</button>
+
+  <div class="search-box">
+    <input type="text" [(ngModel)]="searchQuery" (input)="searchOrders()" placeholder="Search Orders">
+  </div>
+
+  <!-- Display search results here -->
+  <div class="search-results">
+    <div *ngFor="let result of searchResults" class="order-card">
+      <div class="order-details">
+        <span>Customer: {{ result.customerName }}</span>
+        <span>Product: {{ result.product }}</span>
+        <span>Quantity: {{ result.quantity }}</span>
+      </div>
+      <div class="order-actions">
+        <button (click)="editOrder(result)">Edit</button>
+        <button (click)="deleteOrder(result)">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Display all orders here -->
+  <div class="order-list">
+    <div *ngFor="let order of orders" class="order-card">
+      <div class="order-details">
+        <span>Customer: {{ order.customerName }}</span>
+        <span>Product: {{ order.product }}</span>
+        <span>Quantity: {{ order.quantity }}</span>
+      </div>
+      <div class="order-actions">
+        <button (click)="editOrder(order)">Edit</button>
+        <button (click)="deleteOrder(order)">Delete</button>
+      </div>
+      <!-- Add form for editing order data -->
+      <div *ngIf="order.editing">
+        <form (submit)="confirmEdit(order)">
+          <label>Customer:</label>
+          <input type="text" [(ngModel)]="order.customerName" name="customerName" required>
+          <label>Product:</label>
+          <input type="text" [(ngModel)]="order.product" name="product" required>
+          <label>Quantity:</label>
+          <input type="number" [(ngModel)]="order.quantity" name="quantity" required>
+          <button type="submit">Confirm</button>
+          <button (click)="cancelEdit(order)">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-admin-footer></app-admin-footer>

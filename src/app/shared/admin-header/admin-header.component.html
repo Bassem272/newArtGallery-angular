@@ -1,8 +1,26 @@
 <p>admin-header works!</p>
 <mat-toolbar color="primary" class="custom-toolbar">
   <span>My App</span>
-  <button mat-button routerLink="/register">products</button>
-  <button mat-button class="mat-warn" routerLink="/login">customers</button>
-  <span class="spacer"></span> <!-- Remove id and add class -->
-  <button mat-button routerLink="/reset-password"> Orders </button>
+  <button mat-button routerLink="/admin/products">products </button>
+  <button mat-button class="mat-warn" routerLink="/admin/customers">customers</button>
+  <!-- <span class="spacer"></span> Remove id and add class -->
+  <button mat-button routerLink="/admin/orders"> Orders </button>
+
+  <div class="spacer"></div>
+
+  <!-- Show these buttons when the user is logged in -->
+  <ng-container *ngIf="isLoggedIn(); else loggedOutButtons">
+    <!-- Logout Button -->
+    <button mat-icon-button routerLink="../../auth/logout">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </ng-container>
+
+  <!-- Show these buttons when the user is logged out -->
+  <ng-template #loggedOutButtons>
+    <!-- Login Button -->
+    <button mat-icon-button routerLink="../../auth/login">
+      <mat-icon>login</mat-icon>
+    </button>
+  </ng-template>
 </mat-toolbar>

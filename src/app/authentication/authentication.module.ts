@@ -14,6 +14,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     MatIconModule,
     SharedModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
 })
 export class AuthenticationModule {}

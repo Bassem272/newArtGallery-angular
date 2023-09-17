@@ -16,11 +16,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FooterComponent,
     AdminHeaderComponent,
     AdminFooterComponent,
-    AdminSidenavComponent
+    AdminSidenavComponent,
   ],
   imports: [
     CommonModule,
@@ -43,12 +43,21 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatIconModule,
     MatInputModule,
     MatSidenavModule,
-    MatGridListModule,MatListModule
-
-  ],exports:[  HeaderComponent,
+    MatGridListModule,
+    MatListModule,
+  ],
+  exports: [
+    HeaderComponent,
     FooterComponent,
     AdminHeaderComponent,
     AdminFooterComponent,
-    AdminSidenavComponent]
+    AdminSidenavComponent,
+    // MatIconModule,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {
+  constructor(
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer
+  ) {}
+}

@@ -1,0 +1,155 @@
+/* Add this CSS to your styles.css or a dedicated CSS file */
+
+.profile-card {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background-color: whitesmoke;
+  // width:
+}
+
+.mat-card-header {
+  background-color: #1976D2; /* Header background color */
+  color: white; /* Header text color */
+  padding: 16px;
+}
+
+.mat-card-content {
+  padding: 16px;
+}
+
+.mat-card-actions {
+  display: flex;
+  justify-content: center;
+  background-color: #F5F5F5; /* Actions background color */
+  padding: 8px;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid white; /* Profile image border */
+  margin: 0 auto;
+  margin-top: -60px;
+}
+
+/* Style buttons */
+.mat-card-actions button {
+  margin: 0 8px;
+  background-color: #1976D2; /* Button background color */
+  color: white; /* Button text color */
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.mat-card-actions button:hover {
+  background-color: #1565C0; /* Hover background color */
+}
+.placeholder-card {
+  width: 100%;
+  height: 200px; /* Adjust the height as needed */
+  background-color: #f0f0f0; /* Placeholder card background color */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-line {
+  width: 80%;
+  height: 10px;
+  margin: 5px 0;
+  background-color: #ccc; /* Loading line color */
+}
+/* profile.component.css */
+
+.profile-card {
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 20px auto;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mat-card-actions {
+  display: flex;
+  justify-content: center;
+}
+
+button.mat-button {
+  margin: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+}
+
+button.mat-button:hover {
+  background-color: #0056b3;
+}
+/* profile.component.css */
+
+.profile-card {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.user-details {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.user-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.user-email {
+  color: #666;
+}
+
+.user-info {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.mat-card-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+button.mat-button {
+  margin: 0 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  min-width: 150px;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+button.mat-button:hover {
+  background-color: #0056b3;
+}

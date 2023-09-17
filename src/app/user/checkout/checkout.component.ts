@@ -11,19 +11,20 @@ export class CheckoutComponent {
 
   checkoutForm: FormGroup;
 
-constructor(private formBuilder: FormBuilder) {
+constructor(private formBuilder: FormBuilder,private router : Router) {
 
 this.checkoutForm = this.formBuilder.group({
 
   firstName: ['',Validators.required],
-  lastName: '',
-  email: '',
-  phone: '',
-  address: '',
-  city: '',
-  state: '',
-  zip: '',
-  country: '',
+  lastName: ['',Validators.required],
+  email: ['',[Validators.required,Validators.email,Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)]],
+  phone: ['',Validators.required,],
+  address: ['',Validators.required],
+  city: ['',],
+  state: ['',],
+  zip: [''],
+  message:['']
+
 
 })
 
@@ -84,7 +85,7 @@ this.orderItems.forEach(item => {
   }
 
   calculateTotal(): number {
-     console.log(this.orderItems);
+    //  console.log(this.orderItems);
     return Math.round(this.orderItems.reduce((total:number, item:any) => total + item.subtotal, 0));
 
 
@@ -93,6 +94,8 @@ this.orderItems.forEach(item => {
   onSubmit(): void {
     console.log('Submit');
     console.log(this.orderItems);
+    console.log(this.checkoutForm.value)
+    this.router.navigate(['/checkout'],);
   }
 
 }
