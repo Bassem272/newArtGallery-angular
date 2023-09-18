@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, Input } from '@angular/core';
+import { CartService } from 'src/app/services/cart.service';
 // import { faMinus } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-cart',
@@ -6,97 +7,117 @@ import { ChangeDetectorRef, Component, Input } from '@angular/core';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent {
-  @Input() quantity = 1;
+  @Input() stock = 1;
   @Input() price = 17.9;
-  cartItems: any[] = []; // Replace 'any' with your actual cart item data type
+  // cartItems: any[] = []; // Replace 'any' with your actual cart item data type
   // faMinus = faMinus;
   itemSubtotals: number[] = [];
+ cartItems = [
+    {
+      id: 1,
+      name: 'Artwork 1',
+      price: 100,
+      stock: 2,
+      image:'https://picsum.photos/id/100/200/300'
+    },
+    {
+      id: 2,
+      name: 'Artwork 2',
+      price: 75,
+      stock: 1,
+      image:'https://picsum.photos/id/103/200/300'
+    },
+    {
+      id: 3,
+      name: 'Artwork 3',
+      price: 75,
+      stock: 1,
+      image:'https://picsum.photos/id/101/200/300'
+    },{
+      id: 1,
+      name: 'Artwork 1',
+      price: 100,
+      stock: 2,
+      image:'https://picsum.photos/id/100/200/300'
+    },
+    {
+      id: 2,
+      name: 'Artwork 2',
+      price: 75,
+      stock: 1,
+      image:'https://picsum.photos/id/103/200/300'
+    },
+    {
+      id: 3,
+      name: 'Artwork 3',
+      price: 75,
+      stock: 1,
+      image:'https://picsum.photos/id/101/200/300'
+    },
+    // Add more cart items as needed
+  ];
 
-  constructor(private cdr: ChangeDetectorRef) {
-   
-    // Initialize 'cartItems' with sample cart item data
-    this.cartItems = [
-      {
-        id: 1,
-        name: 'Artwork 1',
-        price: 100,
-        quantity: 2,
-        imageUrl:'https://picsum.photos/id/100/200/300'
-      },
-      {
-        id: 2,
-        name: 'Artwork 2',
-        price: 75,
-        quantity: 1,
-        imageUrl:'https://picsum.photos/id/103/200/300'
-      },
-      {
-        id: 3,
-        name: 'Artwork 3',
-        price: 75,
-        quantity: 1,
-        imageUrl:'https://picsum.photos/id/101/200/300'
-      },{
-        id: 1,
-        name: 'Artwork 1',
-        price: 100,
-        quantity: 2,
-        imageUrl:'https://picsum.photos/id/100/200/300'
-      },
-      {
-        id: 2,
-        name: 'Artwork 2',
-        price: 75,
-        quantity: 1,
-        imageUrl:'https://picsum.photos/id/103/200/300'
-      },
-      {
-        id: 3,
-        name: 'Artwork 3',
-        price: 75,
-        quantity: 1,
-        imageUrl:'https://picsum.photos/id/101/200/300'
-      },
-      // Add more cart items as needed
-    ]; this.calculateSubtotals();
-  }
+    constructor(private cdr: ChangeDetectorRef,private cartService: CartService) {}
+    ngOnInit(): void {
+      // Retrieve cart data from local storage and initialize the cart
+      // const savedCart = localStorage.getItem('cart');
+      // if (savedCart) {
+      //   this.cartService.initializeCart(JSON.parse(savedCart));
+      //   this.cartItems = JSON.parse(savedCart); // Assign the parsed cart data
+      // }
+        // this.calculateSubtotals();
 
-  // increaseQuantity() {
-  //   this.quantity++;
+      // Example in a component method
+ this.getCartContents();
+
+    }
+
+
+getCartContents(): void {
+  this.cartItems= this.cartService.getCart();
+
+}
+
+
+checkout(){
+   console.log(this.cartItems);
+}
+  // increasestock() {
+  //   this.stock++;
   //   this.cdr.detectChanges(); // Manually trigger change detection
   // }
 
-  // decreaseQuantity() {
-  //   if (this.quantity > 0) {
-  //     this.quantity--;
+  // decreasestock() {
+  //   if (this.stock > 0) {
+  //     this.stock--;
   //     this.cdr.detectChanges(); // Manually trigger change detection
   //   }
   // }
   increaseQuantity(item: any) {
-    item.quantity++;
+    item.stock++;
     this.calculateSubtotals();
     this.cdr.detectChanges(); // Manually trigger change detection
   }
 
   decreaseQuantity(item: any) {
-    if (item.quantity > 0) {
-      item.quantity--;
+    if (item.stock > 0) {
+      item.stock--;
       this.calculateSubtotals();
       this.cdr.detectChanges(); // Manually trigger change detection
     }
   }
   // arr:any[]=[];
   // getTotalPrice1(item: any): number {
-  //   return item.quantity * this.price;
+  //   return item.stock * this.price;
   // }
 
   getTotalPrice2(item: any): number {
-    return item.quantity * item.price;
+    return item.stock * item.price;
   }
   // this form the array
   getTotalPrice(): number {
     return this.cartItems.reduce(
-      (total, item) => total + item.price * item.quantity,
+      (total, item) => total + item.price * item.stock,
       0
     );
   }
@@ -110,3 +131,4 @@ export class CartComponent {
     return this.itemSubtotals.reduce((total, subtotal) => total + subtotal, 0);
   }
 }
+

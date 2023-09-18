@@ -11,7 +11,7 @@
   <!-- Show these buttons when the user is logged in -->
   <ng-container *ngIf="isLoggedIn(); else loggedOutButtons">
     <!-- Logout Button -->
-    <button mat-icon-button routerLink="../../auth/logout">
+    <button mat-icon-button routerLink="/auth/logout">
       <mat-icon>exit_to_app</mat-icon>
     </button>
   </ng-container>
@@ -19,7 +19,7 @@
   <!-- Show these buttons when the user is logged out -->
   <ng-template #loggedOutButtons>
     <!-- Login Button -->
-    <button mat-icon-button routerLink="../../auth/login">
+    <button mat-icon-button routerLink="/auth/login">
       <mat-icon>login</mat-icon>
     </button>
   </ng-template>

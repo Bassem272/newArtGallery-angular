@@ -52,15 +52,15 @@
   <div class="row mb-4">
     <div class="col-lg-3 col-md-12">
       <mat-card id="fir">
-        <img src="{{ item.imageUrl }}" class="w-100" alt="{{ item.name }}" />
+        <img src="{{ item.image }}" class="w-100" alt="{{ item.name }}" />
       </mat-card>
     </div>
     <div class="col-lg-5 col-md-6">
       <mat-card id="firr">
         <mat-card-content>
           <p><strong>{{ item.name }}</strong></p>
-          <p>Color: {{ item.color }}</p>
-          <p>Size: {{ item.size }}</p>
+          <p>Price: {{ item.price }}</p>
+          <p>quantity: {{ item.stock}}</p>
         </mat-card-content>
       </mat-card>
     </div>
@@ -72,14 +72,14 @@
             <button mat-icon-button (click)="decreaseQuantity(item)">
               <mat-icon>remove</mat-icon>
             </button>
-            <span>{{ item.quantity }}</span>
+            <span>{{ item.stock }}</span>
             <button mat-icon-button (click)="increaseQuantity(item)">
               <mat-icon>add</mat-icon>
             </button>
           </div>
           <!-- Quantity controls -->
           <p><strong>{{ item.price | currency:'USD':'symbol' }}</strong></p>
-          <p>Total Price: {{ item.price * item.quantity | currency:'USD':'symbol' }}</p>
+          <p>Total Price: {{ item.price * item.stock | currency:'USD':'symbol' }}</p>
         </mat-card-content>
       </mat-card>
     </div>
@@ -109,14 +109,16 @@
                   </mat-list>
                 </mat-card-content>
                 <mat-card-actions>
-                  <button mat-raised-button color="primary" class="btn-lg btn-block" routerLink="/user/checkout">Go to checkout</button>
+                  <button mat-raised-button color="primary" class="btn-lg btn-block"
+                  routerLink="/user/checkout"
+                  (click)="checkout()">Go to checkout</button>
                 </mat-card-actions>
               </mat-card>
               <!-- Summary card -->
               <mat-card id="gocheck">
                 <mat-card-content>
                   <p>Total: {{ getTotalPrice() | currency:'USD':'symbol' }}</p>
-                  <button id="checkout-btn" mat-raised-button color="primary" routerLink="/user/checkout">Checkout</button>
+                  <button id="checkout-btn" mat-raised-button color="primary" routerLink="/user/checkout" (click)="checkout()">Checkout</button>
                 </mat-card-content>
 
               </mat-card>

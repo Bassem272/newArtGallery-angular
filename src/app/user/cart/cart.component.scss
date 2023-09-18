@@ -57,22 +57,22 @@ mat-card-content:last-child button {
 /* Gradient background */
 .gradient-custom {
   margin-bottom: 20vh;
-  background: #6a11cb;
-  background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
-  background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+  // background: #6a11cb;
+  // background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+  // background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
 }
 
 /* Container styles */
 .container {
   display: block;
-  background-color: #cbc1d5;
+  background-color: #e9e8ea;
   max-height: 100%;
 
 }
 .secondContainer {
   display: block;
-  background-color: #6a11cb;
-  max-height: 100%; 
+  // background-color: #6a11cb;
+  max-height: 100%;
    display: grid;
 grid-template-areas: 1fr 1fr;
 grid-row-gap: 10px;
@@ -104,8 +104,8 @@ grid-row-gap: 10px;
 }
 .gocheck{
   width:20vw;
-  background-color: red;
+  // background-color: red;
 
- 
+
 }
 

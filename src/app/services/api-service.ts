@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
 import { Artwork } from '../interfaces/artwork';
 import { Order } from '../interfaces/order';
 import { User } from '../interfaces/user';
@@ -10,6 +10,17 @@ import { LocalStorageService } from './localStorage.service';
   providedIn: 'root'
 })
 export class ApiService {
+  defaultProduct : Artwork={
+    id: 1,
+    name: 'Artwork Name',
+    description: 'Description',
+    price: 100,
+    stock: 10,
+    category_id:1,
+
+    image: 'image-url.jpg'
+  };
+
 
   constructor(private http: HttpClient,
     private localStorageService: LocalStorageService) { }
@@ -55,8 +66,8 @@ export class ApiService {
     let token = this.localStorageService.get('token');
     // Include the token in the request headers
     const headers = new HttpHeaders({
-      Authorization: 'Bearer ' + token,
-      role: 'customer',
+      'Authorization': 'Bearer ' + token,
+      'role': 'customer',
     });
 
     // Pass headers in the request options
@@ -65,9 +76,22 @@ export class ApiService {
   }
 
   getProduct(id:number): Observable<Artwork> {
+    let token = this.localStorageService.get('token');
+    let user = this.localStorageService.get('customer');
+    // Include the token in the request headers
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + token,
+      'role': user.role,
+    });
     // Pass headers in the request options
-    const requestOptions = { headers: this.headers, responseType: 'json' as const };
-    return this.http.get<Artwork>('http://127.0.0.1:8000/api/products/'+id, requestOptions);
+    const requestOptions = { headers:this.headers, responseType: 'json' as const };
+    return this.http.get<Artwork>('http://127.0.0.1:8000/api/products/'+id, requestOptions) .pipe(
+      catchError((error: any) => {
+        // Handle the error, e.g., log it or return a default product
+        console.error('Error fetching product:', error);
+        return of(this.defaultProduct);
+      })
+    );;
   }
 
  createProduct(body:any): Observable<Artwork> {

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api-service';
 import { Component } from '@angular/core';
 
@@ -20,13 +21,19 @@ import { CartService } from 'src/app/services/cart.service';
 export class HomeComponent {
 
 
-  constructor(private apiService: ApiService,private cartService: CartService) {}
+  constructor(private apiService: ApiService,private cartService: CartService,private router:Router) {}
 
   addToCart(product: any): void {
     this.cartService.addToCart(product);
+    console.log(product);
+    const carts= this.cartService.getCart()
+    console.log(carts);
   }
 
+  removeFromCart(product: any): void {
+    this.cartService.removeFromCartById(product.id);
 
+  }
 
    ngOnInit(): void {
     // Make the API request to fetch featured artworks here
@@ -122,6 +129,7 @@ export class HomeComponent {
   viewArtworkDetails(artworkId: number): void {
     // Implement your artwork details view logic here
     console.log(`Viewing details for artwork with ID ${artworkId}.`);
+    this.router.navigate(['/user/details', artworkId]);
   }
   showOverlay: boolean = false;
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
   private cart: any[] = [];
@@ -14,7 +14,7 @@ export class CartService {
   }
 
   removeFromCart(product: any): void {
-    const index = this.cart.findIndex(item => item.id === product.id);
+    const index = this.cart.findIndex((item) => item.id === product.id);
     if (index !== -1) {
       this.cart.splice(index, 1);
       this.updateCartStorage();
@@ -25,7 +25,7 @@ export class CartService {
     return this.cart;
   }
   removeFromCartById(productId: number): void {
-    const index = this.cart.findIndex(item => item.id === productId);
+    const index = this.cart.findIndex((item) => item.id === productId);
     if (index !== -1) {
       this.cart.splice(index, 1);
       this.updateCartStorage();
@@ -34,4 +34,11 @@ export class CartService {
 
   private updateCartStorage(): void {
     localStorage.setItem('cart', JSON.stringify(this.cart));
-  }}
+  }
+
+  initializeCart(savedCart:any): void {
+
+      this.cart = JSON.parse(savedCart);
+
+  }
+}

@@ -1,7 +1,8 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Validator } from '@angular/forms';
+import { CartService } from 'src/app/services/cart.service';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -11,7 +12,7 @@ export class CheckoutComponent {
 
   checkoutForm: FormGroup;
 
-constructor(private formBuilder: FormBuilder,private router : Router) {
+constructor(private cartService:CartService,private formBuilder: FormBuilder,private router : Router) {
 
 this.checkoutForm = this.formBuilder.group({
 
@@ -27,30 +28,58 @@ this.checkoutForm = this.formBuilder.group({
 
 
 })
-
+  this.getCartContents();
 this.orderItems.forEach(item => {
   this.updateSubtotal(item);
 });
+this.getTotalPrice();
 
 }
 
+// OnInit():void{
 
+
+
+// }
+getCartContents(): void {
+  this.orderItems= this.cartService.getCart();
+  console.log(this.orderItems)
+
+}
+
+getTotalPrice(): number {
+  return this.orderItems.reduce(
+    (total, item) => total + item.price * item.stock,
+    0
+  );
+}
   orderItems = [
     {
-      productName: 'Product 1',
-      price: 10.99,
-      quantity: 86,
-      subtotal: 0
-    },  {
-      productName: 'Product 2',
-      price: 10.99,
-      quantity: 2,
-      subtotal: 0
-    },  {
-      productName: 'Product 3',
-      price:50,
-      quantity: 6,
-      subtotal: 0
+      id: 1,
+      name: 'Artwork 1',
+      price: 100,
+      stock: 2,
+      image:'https://picsum.photos/id/100/200/300'
+    },
+    {
+      id: 2,
+      name: 'Artwork 2',
+      price: 75,
+      stock: 1,
+      image:'https://picsum.photos/id/103/200/300'
+    },
+    {
+      id: 3,
+      name: 'Artwork 3',
+      price: 75,
+      stock: 1,
+      image:'https://picsum.photos/id/101/200/300'
+    },{
+      id: 1,
+      name: 'Artwork 1',
+      price: 100,
+      stock: 2,
+      image:'https://picsum.photos/id/100/200/300'
     },
     // Add more order items here
   ];
@@ -90,7 +119,12 @@ this.orderItems.forEach(item => {
 
 
   }
-
+  // getTotalPrice(): number {
+  //   return this.orderItems.reduce(
+  //     (total, item) => total + item.price * item.stock,
+  //     0
+  //   );
+  // }
   onSubmit(): void {
     console.log('Submit');
     console.log(this.orderItems);

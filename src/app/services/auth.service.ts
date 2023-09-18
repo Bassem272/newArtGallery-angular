@@ -22,9 +22,9 @@ export class AuthService {
   // ,requestOptions
   register(data: any): Observable<any> {
     const body = {
-      name: data.name,
-      email: data.email,
-      password: data.password,
+     "name": data.name,
+     "email": data.email,
+      "password": data.password,
     };
     // Pass headers in the request options
     const requestOptions = { headers: Headers };
@@ -41,8 +41,8 @@ export class AuthService {
     });
     // Pass headers in the request options
     const body = {
-      email: data.email,
-      password: data.password,
+      "email": data.email,
+      "password": data.password,
     };
     // Pass headers in the request options
     const requestOptions = { headers: headers };
@@ -54,8 +54,8 @@ export class AuthService {
     let token = this.localStorageService.get('token');
     // Include the token in the request headers
     const headers = new HttpHeaders({
-      Authorization: 'Bearer ' + token,
-      role: 'customer',
+      'Authorization': 'Bearer ' + token,
+      'role': 'customer',
     });
     // Pass headers in the request options
     const requestOptions = { headers: headers };
@@ -64,11 +64,11 @@ export class AuthService {
 
   adminLogin(data: any): Observable<any> {
     const headers = new HttpHeaders({
-      role: 'admin',
+      'role': 'admin',
     });
     const body = {
-      email: data.email,
-      password: data.password,
+      "email": data.email,
+      "password": data.password,
     };
     const requestOptions = { headers: headers };
     return this.http.post('http://127.0.0.1:8000/login', body, requestOptions);
@@ -78,8 +78,8 @@ export class AuthService {
     let token = this.localStorageService.get('token');
     // Include the token in the request headers
     const headers = new HttpHeaders({
-      Authorization: 'Bearer ' + token,
-      role: 'admin',
+      'Authorization': 'Bearer ' + token,
+      'role': 'admin',
     });
     const requestOptions = { headers: headers };
     return this.http.post('http://127.0.0.1:8000/logout', requestOptions);

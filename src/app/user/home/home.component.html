@@ -226,7 +226,7 @@ data-bs-ride="carousel"
       <mat-card-title>{{ artwork.title }}</mat-card-title>
       <mat-card-subtitle>{{ artwork.artist }}</mat-card-subtitle>
       <mat-card-actions>
-        <button mat-button color="primary" (click)="addToCart(artwork.id)">
+        <button mat-button color="primary" (click)="addToCart(artwork)">
           <mat-icon>add_shopping_cart</mat-icon> Add to Cart
         </button>
         <button
@@ -238,7 +238,7 @@ data-bs-ride="carousel"
         </button>
       </mat-card-actions>
       <div class="overlay" [@overlayAnimation]="showOverlay">
-        <button mat-button color="primary" (click)="addToCart(artwork.id)">
+        <button mat-button color="primary" (click)="addToCart(artwork)">
           <mat-icon>add_shopping_cart</mat-icon> Add to Cart
         </button>
         <button

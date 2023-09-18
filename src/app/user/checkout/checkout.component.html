@@ -69,6 +69,7 @@
           <mat-checkbox class="mb-3">Keep me up to date on news</mat-checkbox>
 
           <mat-divider></mat-divider>
+          <mat-divider></mat-divider>
           <!-- Order Items Card -->
           <mat-card class="order-items-card">
             <mat-card-content>
@@ -84,7 +85,7 @@
                       class="d-flex justify-content-between align-items-center"
                     >
                       <div>
-                        <h4>{{ item.productName }}</h4>
+                        <h4>{{ item.name }}</h4>
                         <p>Price: ${{ item.price }}</p>
                       </div>
                       <div class="quantity">
@@ -101,13 +102,13 @@
                             (ngModelChange)="updateSubtotal(item)"
                           />
                         </mat-form-field> -->
-                        <span style="color:crimson; font-size: large;margin:0px 5px 5px 0px;">{{ item.quantity }}</span>
+                        <span style="color:crimson; font-size: large;margin:0px 5px 5px 0px;">{{ item.stock }}</span>
                         <button mat-raised-button color="accent" (click)="decrementQuantity(item)">
                           <mat-icon>remove</mat-icon>
                         </button>
                       </div>
                       <div>
-                        <p>Subtotal: ${{ item.subtotal }}</p>
+                        <p>Subtotal: {{ item.price * item.stock | currency:'USD':'symbol' }}</p>
                       </div>
                     </div>
                   </mat-card-content>
@@ -131,7 +132,9 @@
             <mat-card-content>
               <div class="d-flex justify-content-between">
                 <p>Total price:</p>
-                <p class="fw-bold" mat-color-primary style="color:crimson; font-size: large;margin:0px 5px 5px 0px;">${{ calculateTotal() }}</p>
+                <p class="fw-bold" mat-color-primary
+                style="color:crimson; font-size: large;margin:0px 5px 5px 0px;">
+                {{ getTotalPrice() | currency:'USD':'symbol' }}</p>
               </div>
             </mat-card-content>
           </mat-card>
@@ -159,7 +162,7 @@
                 </mat-select>
               </mat-form-field>
             </div>
-         
+
             <div class="col-md-6">
               <mat-form-field class="full-width">
                 <mat-label>Zip</mat-label>
