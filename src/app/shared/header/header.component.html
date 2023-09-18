@@ -1,25 +1,25 @@
 <p>header works!</p>
 
 <mat-toolbar color="primary">
- <span mat-icon-button routerLink="../../user/home" >My Art Gallery</span>
+ <span mat-icon-button routerLink="/user/home" >My Art Gallery</span>
 
   <!-- Home Button -->
-  <button mat-icon-button routerLink="../../user/home" routerLinkActive="active">
+  <button mat-icon-button routerLink="/user/home" routerLinkActive="active">
     <mat-icon size="3x">home</mat-icon>
   </button>
 
   <!-- Profile Button -->
-  <button mat-icon-button routerLink="../../user/profile" routerLinkActive="active">
+  <button mat-icon-button routerLink="/user/profile" routerLinkActive="active">
     <mat-icon>person</mat-icon>
   </button>
 
   <!-- Products Button -->
-  <button mat-icon-button routerLink="../../user/products" routerLinkActive="active">
+  <button mat-icon-button routerLink="/user/products" routerLinkActive="active">
     <mat-icon>store</mat-icon>
   </button>
 
   <!-- Cart Button -->
-  <button mat-icon-button routerLink="../../user/cart" routerLinkActive="active">
+  <button mat-icon-button routerLink="/user/cart" routerLinkActive="active">
     <mat-icon>shopping_cart</mat-icon>
   </button>
 
@@ -28,7 +28,7 @@
   <!-- Show these buttons when the user is logged in -->
   <ng-container *ngIf="isLoggedIn(); else loggedOutButtons">
     <!-- Logout Button -->
-    <button mat-icon-button routerLink="../../auth/logout">
+    <button mat-icon-button routerLink="/auth/logout">
       <mat-icon>exit_to_app</mat-icon>
     </button>
   </ng-container>
@@ -36,7 +36,7 @@
   <!-- Show these buttons when the user is logged out -->
   <ng-template #loggedOutButtons>
     <!-- Login Button -->
-    <button mat-icon-button routerLink="../../auth/login">
+    <button mat-icon-button routerLink="/auth/login">
       <mat-icon>login</mat-icon>
     </button>
   </ng-template>

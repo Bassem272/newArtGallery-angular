@@ -14,23 +14,39 @@ export class ProductDetailsComponent  {
 
 
     productId: number;
+  data: any;
+  constructor(private route: ActivatedRoute, private apiService: ApiService, private cartService: CartService) {
+    this.productId = this.route.snapshot.params['id'];
+    console.log(this.productId);
+
+    this.apiService.getProduct(this.productId).subscribe(
+      (data) => {
+        this.product = data.product; // Access the 'product' property of the 'data' object
+        console.log(this.product); // Corrected to 'this.product'
+      },
+      (error) => {
+        console.error('Error fetching product details:', error);
+      }
+    );
+  }
 
 
-    constructor(private route: ActivatedRoute, private apiService: ApiService
-      ,private cartService : CartService) {
-      this.productId = this.route.snapshot.params['id'];
-      console.log(this.productId);
+    // constructor(private route: ActivatedRoute, private apiService: ApiService
+    //   ,private cartService : CartService) {
+    //   this.productId = this.route.snapshot.params['id'];
+    //   console.log(this.productId);
 
-      this.apiService.getProduct(this.productId).subscribe(
-        (data) => {
-          this.product = data;
-        },
-        (error) => {
-          console.error('Error fetching product details:', error);
-        }
-      );
+    //   this.apiService.getProduct(this.productId).subscribe(
+    //     (data) => {
+    //       this.product = data;
+    //       console.log(this.data.product);
+    //     },
+    //     (error) => {
+    //       console.error('Error fetching product details:', error);
+    //     }
+    //   );
 
-    }
+    // }
 
     // ngOnInit(): void {
     //   this.apiService.getProduct(this.productId).subscribe(
