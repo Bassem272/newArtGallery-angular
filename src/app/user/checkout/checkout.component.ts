@@ -1,3 +1,4 @@
+import { ApiService } from 'src/app/services/api-service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -12,7 +13,7 @@ export class CheckoutComponent {
 
   checkoutForm: FormGroup;
 
-constructor(private cartService:CartService,private formBuilder: FormBuilder,private router : Router) {
+constructor(private apiService : ApiService,private cartService:CartService,private formBuilder: FormBuilder,private router : Router) {
 
 this.checkoutForm = this.formBuilder.group({
 
@@ -127,11 +128,36 @@ getTotalPrice(): number {
   //     0
   //   );
   // }
+
   onSubmit(): void {
     console.log('Submit');
     console.log(this.orderItems);
     console.log(this.checkoutForm.value)
-    this.router.navigate(['/checkout'],);
-  }
 
-}
+    const order = {
+      "order_status":"pending",
+      "customer_name": this.checkoutForm.value.firstName+this.checkoutForm.value.lastName,
+      "customer_phone": this.checkoutForm.value.phone,
+      "customer_email": this.checkoutForm.value.email,
+      "customer_address": this.checkoutForm.value.address,
+      "total": this.getTotalPrice(),
+      "order_items": this.orderItems.map((product) => {
+        return {
+          "product_name": product.name,
+          "product_quantity": product.stock,
+          "product_price": product.price,
+          "product_subtotal": product.stock * product.price,
+        };
+      }),
+
+    };
+ console.log(order)
+
+ this.apiService.createOrder(order).subscribe(data => {
+    const createdorder  = data.order;
+      console.log(createdorder);
+      // this.router.navigate(['/checkout']);
+    });
+    // this.router.navigate(['/checkout'],);
+  }}
+

@@ -30,8 +30,8 @@ export class ApiService {
   token = '2|laravel_sanctum_OHHRthNNEsL7zIyff85uhRqH9JTLaOupBrfILAWqc8d34ef3';
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    Authorization: 'Bearer 6|8WVg94gj68G2C1vJgfMr0uXuRsZudcmwUcVxaEWSc4f69478',
-    role: 'admin',
+    'Authorization': 'Bearer 9|IBvKkmX4hru69Awyw3zO09l5UK1WGhLs1zqLnObT08706d78',
+    'role': 'admin',
   });
 
   // <!---------------------------- customer section-->
@@ -254,12 +254,13 @@ export class ApiService {
       requestOptions
     );
   }
-  createOrder(body: any): Observable<Order> {
+
+  createOrder(body: any): Observable<any> {
     const requestOptions = {
       headers: this.headers,
       responseType: 'json' as const,
     };
-    return this.http.post<Order>(
+    return this.http.post(
       'http://127.0.0.1:8000/api/orders',
       body,
       requestOptions
