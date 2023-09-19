@@ -31,7 +31,7 @@ export class ApiService {
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
     'Authorization': 'Bearer 9|IBvKkmX4hru69Awyw3zO09l5UK1WGhLs1zqLnObT08706d78',
-    'role': 'admin',
+    'role': 'admin'
   });
 
   // <!---------------------------- customer section-->
@@ -95,8 +95,8 @@ export class ApiService {
   }
 
   getProduct(id: number): Observable<any> {
-    let token = this.localStorageService.get('token');
-    let user = this.localStorageService.get('customer');
+    // let token = this.localStorageService.get('token');
+    // let user = this.localStorageService.get('customer');
     // Include the token in the request headers
     // const headers = new HttpHeaders({
     //   Authorization: 'Bearer ' + token,
@@ -118,13 +118,13 @@ export class ApiService {
       );
   }
 
-  createProduct(body: any): Observable<Artwork> {
+  createProduct(body: any): Observable<any> {
     // Pass headers in the request options
     const requestOptions = {
-      headers: this.headers,
-      responseType: 'json' as const,
+      headers: this.headers
+
     };
-    return this.http.post<Artwork>(
+    return this.http.post(
       'http://127.0.0.1:8000/api/products',
       body,
       requestOptions
@@ -139,7 +139,7 @@ export class ApiService {
       body,
     };
     return this.http.put<Artwork>(
-      'http://127.0.0.1:8000/api/products/' + id,
+      'http://127.0.0.1:8000/api/products/' + id,body,
       requestOptions
     );
   }

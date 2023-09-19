@@ -19,6 +19,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from '../shared/shared.module';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatInputModule,
     MatSidenavModule,
     MatGridListModule,
-    MatDividerModule,    ReactiveFormsModule,
+    MatDividerModule,    ReactiveFormsModule,MatSnackBarModule
   ],
 })
 export class AdminModule {}

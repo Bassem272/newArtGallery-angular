@@ -60,7 +60,7 @@ export class AuthService {
     const requestOptions = { headers: headers };
     return this.http.post('http://127.0.0.1:8000/logout', requestOptions);
   }
-
+  
   adminLogin(data: any): Observable<any> {
     const headers = new HttpHeaders({
       role: 'admin',

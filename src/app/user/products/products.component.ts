@@ -109,63 +109,6 @@ export class ProductsComponent implements OnInit, AfterViewInit {
   //   product.isHovered = false;
   // }
   // Access the route parameter (id)
-  ngOnInit(): void {
-    this.loadProducts();
-    this.dataSource.paginator = this.paginator;
-    // this.updateDataSource();
-    // Use the paramMap observable to handle changes in route parameters
-    // this.route.paramMap.subscribe((params: ParamMap) => {
-    //   // Check if the 'id' parameter exists before accessing it
-    //   if (params.has('id')) {
-    //     this.productId = params.get('id');
-    //     // Now you can safely use this.productId
-    //   } else {
-    //     // Handle the case where 'id' parameter is not present
-    //     this.productId = null;
-    //   }
-    // });
-    this.dataSource.paginator = this.paginator;
-  }
-  hoveredArtwork: any | null = null; // Initialize hoveredArtwork as null
-
-  // Load products from the API
-  loadProducts(): void {
-    this.apiService.getProducts().subscribe(
-      (data: Artwork[]) => {
-        this.dataSource.data = data;
-        this.featuredArtworks = data;
-      },
-      (error) => {
-        console.error('Error loading products:', error);
-      }
-    );
-  }
-  // Load product details based on productId
-  loadProductDetails(productId: number): void {
-    this.apiService.getProduct(productId).subscribe(
-      (product: Artwork) => {
-        // Use the product data to render the details
-        console.log('Product Details:', product);
-      },
-      (error) => {
-        console.error('Error loading product details:', error);
-      }
-    );
-  }
-  // Function to handle mouseenter event
-  onArtworkMouseEnter(artwork: any) {
-    this.hoveredArtwork = artwork;
-  }
-
-  // Function to handle mouseleave event
-  onArtworkMouseLeave() {
-    this.hoveredArtwork = null;
-  }
-  addToCart(product: any) {
-    this.cartService.addToCart(product);
-    console.log(product);
-  }
-
   featuredArtworks: Artwork[] = [
     {
       id: 1,
@@ -233,6 +176,66 @@ export class ProductsComponent implements OnInit, AfterViewInit {
       stock: 10,
     },
   ];
+
+
+  ngOnInit(): void {
+    this.loadProducts();
+    this.dataSource.paginator = this.paginator;
+    // this.updateDataSource();
+    // Use the paramMap observable to handle changes in route parameters
+    // this.route.paramMap.subscribe((params: ParamMap) => {
+    //   // Check if the 'id' parameter exists before accessing it
+    //   if (params.has('id')) {
+    //     this.productId = params.get('id');
+    //     // Now you can safely use this.productId
+    //   } else {
+    //     // Handle the case where 'id' parameter is not present
+    //     this.productId = null;
+    //   }
+    // });
+    this.dataSource.paginator = this.paginator;
+  }
+  hoveredArtwork: any | null = null; // Initialize hoveredArtwork as null
+
+  // Load products from the API
+  loadProducts(): void {
+    this.apiService.getProducts().subscribe(
+      (data: Artwork[]) => {
+        this.dataSource.data = data;
+        this.featuredArtworks = data;
+      },
+      (error) => {
+        console.error('Error loading products:', error);
+      }
+    );
+  }
+  // Load product details based on productId
+  loadProductDetails(productId: number): void {
+    this.apiService.getProduct(productId).subscribe(
+      (product: Artwork) => {
+        // Use the product data to render the details
+        console.log('Product Details:', product);
+      },
+      (error) => {
+        console.error('Error loading product details:', error);
+      }
+    );
+  }
+  // Function to handle mouseenter event
+  onArtworkMouseEnter(artwork: any) {
+    this.hoveredArtwork = artwork;
+  }
+
+  // Function to handle mouseleave event
+  onArtworkMouseLeave() {
+    this.hoveredArtwork = null;
+  }
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
+    console.log(product);
+  }
+
+
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;

@@ -1,43 +1,51 @@
 <!-- <p>header works!</p> -->
 
 <mat-toolbar color="primary">
+  <div class="inner">
  <span mat-icon-button routerLink="/user/home" >My Art Gallery</span>
 
   <!-- Home Button -->
-  <button mat-icon-button routerLink="/user/home" routerLinkActive="active">
-    <mat-icon size="3x">home</mat-icon>
+  <button  id="btnh" mat-icon-button routerLink="/user/home" routerLinkActive="active">
+    <span>Home </span><mat-icon size="3x">home</mat-icon>
   </button>
 
   <!-- Profile Button -->
-  <button mat-icon-button routerLink="/user/profile" routerLinkActive="active">
-    <mat-icon>person</mat-icon>
+  <button id="btnh" mat-icon-button routerLink="/user/profile" routerLinkActive="active">
+    <span>Profile </span><mat-icon>person</mat-icon>
   </button>
 
   <!-- Products Button -->
-  <button mat-icon-button routerLink="/user/products" routerLinkActive="active">
-    <mat-icon>store</mat-icon>
+  <button id="btnh" mat-icon-button routerLink="/user/products" routerLinkActive="active">
+    <span>Store </span><mat-icon>store</mat-icon>
   </button>
 
   <!-- Cart Button -->
-  <button mat-icon-button routerLink="/user/cart" routerLinkActive="active">
-    <mat-icon>shopping_cart</mat-icon>
+  <button id="btnh" mat-icon-button routerLink="/user/cart" routerLinkActive="active">
+    <span>Cart </span><mat-icon>shopping_cart</mat-icon>
   </button>
 
   <div class="spacer"></div>
 
+  <!-- <button id="btnh" mat-icon-button routerLink="/auth/admin-login" routerLinkActive="active">
+    <span>Home </span><mat-icon>shopping_cart</mat-icon>
+  </button> -->
   <!-- Show these buttons when the user is logged in -->
   <ng-container *ngIf="isLoggedIn(); else loggedOutButtons">
     <!-- Logout Button -->
     <button mat-icon-button routerLink="/auth/logout">
-      <mat-icon>exit_to_app</mat-icon>
+      Logout<mat-icon>exit_to_app</mat-icon>
     </button>
   </ng-container>
 
   <!-- Show these buttons when the user is logged out -->
   <ng-template #loggedOutButtons>
     <!-- Login Button -->
-    <button mat-icon-button routerLink="/auth/login">
-      <mat-icon>login</mat-icon>
+    <button id="btnh" mat-icon-button routerLink="/auth/login">
+     Login<mat-icon>login</mat-icon>
+    </button>
+    <button id="btnh" mat-icon-button routerLink="/auth/admin-login" routerLinkActive="active">
+      Admin<mat-icon>login</mat-icon>
     </button>
   </ng-template>
+</div>
 </mat-toolbar>

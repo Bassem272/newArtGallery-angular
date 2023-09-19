@@ -1,30 +1,119 @@
-<p>products works!</p>
+
 <app-admin-header></app-admin-header>
 <!-- <app-admin-sidenav></app-admin-sidenav> -->
-<div class="container" >
+<div class="container">
   <h1>Product Management</h1>
-  <button mat-raised-button color="accent"(click)="addProduct()">Add Product</button>
+  <button mat-raised-button color="accent" (click)="addProduct()">
+    Add Product
+  </button>
 
   <!-- Grid layout for products -->
   <div class="card-container">
-    <mat-card *ngFor="let product of products">
-      <h2>{{ product.name }}</h2>
-      <p>{{ product.description }}</p>
-      <button mat-raised-button color="primary" (click)="editProduct(product)">Edit</button>
+    <mat-card *ngFor="let product of featuredArtworks">
+      <img
+        id="image"
+        mat-card-image
+        [src]="product.image"
+        alt="product image"
+      />
+      <!-- mg mat-card-image [src]="artwork.image" alt="{{ artwork.name }}"> -->
+      <h2>title: {{ product.name }}</h2>
+      <p>description:{{ product.description }}</p>
+      <p>price:{{ product.price }}</p>
+      <p>stock:{{ product.stock }}</p>
+      <button mat-raised-button color="primary" (click)="editProduct(product)">
+        Edit
+      </button>
       <mat-divider></mat-divider>
-      <button mat-raised-button color="warn" (click)="deleteProduct(product)">Delete</button>
+      <button mat-raised-button color="warn" (click)="deleteProduct(product)">
+        Delete
+      </button>
 
       <!-- Add form for editing product data -->
-      <div *ngIf="product.editing">
-        <form (submit)="confirmEdit(product)">
+      <div *ngIf="editingProduct === product">
+        <form (submit)="confirmAdd(product)">
+          <div class="edit" *ngIf="adding === true">
+            <mat-form-field>
+              <input
+                matInput
+                [(ngModel)]="product.name"
+                name="name"
+                placeholder="Name"
+                required
+              />
+            </mat-form-field>
+          </div>
+          <div class="edit" *ngIf="adding === true">
+            <mat-form-field>
+              <textarea
+                matInput
+                [(ngModel)]="product.description"
+                name="description"
+                placeholder="Description"
+                required
+              ></textarea>
+            </mat-form-field>
+          </div>
           <mat-form-field>
-            <input matInput [(ngModel)]="product.name" name="name" placeholder="Name" required>
+            price<textarea
+              matInput
+              [(ngModel)]="product.price"
+              name="price"
+              placeholder="price"
+              required
+            ></textarea>
           </mat-form-field>
           <mat-form-field>
-            <textarea matInput [(ngModel)]="product.description" name="description" placeholder="Description" required></textarea>
+            stock<textarea
+              matInput
+              [(ngModel)]="product.stock"
+              name="stock"
+              placeholder="stock"
+              required
+            ></textarea>
           </mat-form-field>
-          <button mat-button color="primary" type="submit">Confirm</button>
-          <button mat-button color="accent" (click)="cancelEdit(product)">Cancel</button>
+
+          <div class="edit" *ngIf="adding === true">
+            <mat-form-field>
+              <textarea
+                matInput
+                [(ngModel)]="product.category_id"
+                name="category_id"
+                placeholder="category_id"
+                required
+              ></textarea>
+            </mat-form-field>
+          </div>
+          <div class="edit" *ngIf="adding === true">
+            <mat-form-field>
+              <textarea
+                matInput
+                [(ngModel)]="product.image"
+                name="image"
+                placeholder="image"
+                required
+              ></textarea>
+            </mat-form-field>
+          </div>
+
+          <div class="edit" *ngIf="adding === true">
+            <button mat-button color="primary" type="submit">
+              Confirm add
+            </button>
+          </div>
+          <div class="edit" *ngIf="adding === false">
+            <button
+              mat-button
+              color="primary"
+              type="click"
+              (click)="confirmEditing(product)"
+            >
+              Confirm edit
+            </button>
+          </div>
+          <button mat-button color="accent" (click)="cancelEdit(product)">
+            Cancel
+          </button>
         </form>
       </div>
     </mat-card>
@@ -32,7 +121,11 @@
 
   <!-- Search results for products -->
   <div class="search-results" *ngIf="searchResults.length > 0">
-    <div class="search-result" *ngFor="let result of searchResults" (click)="selectProduct(result)">
+    <div
+      class="search-result"
+      *ngFor="let result of searchResults"
+      (click)="selectProduct(result)"
+    >
       {{ result.name }}
     </div>
   </div>

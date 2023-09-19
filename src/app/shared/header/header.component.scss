@@ -1,9 +1,19 @@
 .spacer
 {
   flex-grow: 1;
+  width:36vw;
+}
+.inner{
+  max-width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  flex-direction: row;
 }
 mat-toolbar{
-  display: flex;
+  max-width: 100vw;
+  display: flex-box;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -11,4 +21,22 @@ mat-toolbar{
 }
 button{
   margin:10px;
+}
+#btnh
+{
+  // display: flex;
+  margin-left: 50px;
+  padding: 10px 20px;
+  // background-color: #000000;
+color: #ffffff;
+font-size: smaller;
+align-items: center;
+justify-content: center;
+flex-direction: row;
+
+}
+mat-icon{
+  color:gold;
+  top:5px;
+  position: relative;
 }
