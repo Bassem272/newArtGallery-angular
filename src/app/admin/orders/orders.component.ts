@@ -9,13 +9,17 @@ import { ApiService } from 'src/app/services/api-service';
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.scss'],
 })
-export class OrdersComponent implements OnInit{
+export class OrdersComponent{
   // orders: any[] = []; // Initialize with an empty array for orders
   searchQuery: string | undefined;
   searchResults: any[] = [];
   constructor(private _apiService: ApiService
     , private _snackBar: MatSnackBar) {
     this.loadOrders();
+  }
+
+  openSnackBar(message: string, action: string) {
+this._snackBar.open(message, action);
   }
   orders: any = [
     // {
@@ -36,11 +40,11 @@ export class OrdersComponent implements OnInit{
     //   }
   ];
 
-  ngOnInit(): void {
-    // Initialize orders (You can fetch data from your backend API here)
+  // ngOnInit(): void {
+  //   // Initialize orders (You can fetch data from your backend API here)
 
-    this.loadOrders();
-  }
+  //   this.loadOrders();
+  // }
   loadOrders() {
     // Replace with your actual code to fetch orders
     // Example:
@@ -50,7 +54,8 @@ export class OrdersComponent implements OnInit{
       // Assuming that 'order_items' is an array in the response
       // You should parse each item in the 'order_items' array
       this.orders = data;
-      console.log('orderss', this.orders[0]);
+      // this.openSnackBar('orders are fetched successfully','ok')
+      // console.log('orderss', this.orders[0]);
       // this.orders.forEach((element: { order_items: string; }) => {
       //   console.log(element[0]);
       //   element.order_items = JSON.parse(element.order_items);
@@ -77,14 +82,17 @@ export class OrdersComponent implements OnInit{
 
   editing: boolean = false;
 
-  editOrder(id: any): void {
+  editOrder(item: any): void {
     this.editing = true;
+    const id = item.id;
 
     console.log(id)
 
     this._apiService.changeStatus(id).subscribe((data: any) => {
       console.log(data);
       this.loadOrders();
+      this.openSnackBar('order for the customer: '+item.customer_name + 'and the number of the order is :' +item.order_number+ 'is complete now !!','ok')
+
       })
   }
 
