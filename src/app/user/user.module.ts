@@ -27,7 +27,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -45,7 +45,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatExpansionModule,
     MatToolbarModule,
     MatButtonModule,
-
+    MatSnackBarModule,
     FormsModule,
     MatFormFieldModule,
     MatCardModule,
