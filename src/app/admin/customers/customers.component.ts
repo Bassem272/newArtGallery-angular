@@ -12,19 +12,16 @@ export class CustomersComponent implements OnInit {
   customers: any[] = [{ name: 'bassem', email: 'basem@gmail.com' }]; // Initialize with your customer data
   users: any[] = [];
 
-  addUserForm:FormGroup;
-  editUserForm:FormGroup;
-  constructor(private formBuilder : FormBuilder) {
-
+  addUserForm: FormGroup;
+  editUserForm: FormGroup;
+  constructor(private formBuilder: FormBuilder) {
     this.addUserForm = this.formBuilder.group({
-
-      name: ['',[Validators.required]],
-      email: ['',[Validators.required,Validators.email]],
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
     });
     this.editUserForm = this.formBuilder.group({
-
-      name: ['',[Validators.required]],
-      email: ['',[Validators.required,Validators.email]],
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
     });
   }
 
@@ -41,10 +38,11 @@ export class CustomersComponent implements OnInit {
     }
   }
   addCustomer() {
-    const Customer= {
+    const Customer = {
       name: '',
-      email: '',}
-      this.users.push(Customer);
+      email: '',
+    };
+    this.users.push(Customer);
   }
 
   deleteCustomer(customer: any) {
@@ -87,14 +85,13 @@ export class CustomersComponent implements OnInit {
   confirmEditUser(user: any) {
     // Implement the logic to confirm and save edited user data
     user.editing = false;
-    console.log(this.addUserForm.value)
+    console.log(this.addUserForm.value);
   }
 
   cancelEditUser(user: any) {
     // Cancel the editing of the user
     user.editing = false;
   }
-
 
   //===============================
   //===============================

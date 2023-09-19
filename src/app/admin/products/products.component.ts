@@ -13,13 +13,12 @@ export class ProductsComponent implements OnInit {
   searchQuery: string = '';
   searchResults: any[] = [];
   editingProduct: any;
-  adding:boolean=false;
-  constructor(private apiService: ApiService,
-    private _snackBar:MatSnackBar) {
+  adding: boolean = false;
+  constructor(private apiService: ApiService, private _snackBar: MatSnackBar) {
     this.loadProducts();
   }
   openSnackBar(message: string, action: string) {
-this._snackBar.open(message, action);
+    this._snackBar.open(message, action);
   }
 
   // ngOnInit(): void {
@@ -32,7 +31,7 @@ this._snackBar.open(message, action);
   // }
 
   addProduct(): void {
-    this.adding=true;
+    this.adding = true;
     const newProduct = {
       id: this.featuredArtworks.length + 1,
       name: 'product name',
@@ -40,7 +39,7 @@ this._snackBar.open(message, action);
       stock: 1,
       price: 1,
       image: 'http://placehold.it/120x120&text=image4',
-      status:'active'
+      status: 'active',
     };
     this.featuredArtworks.unshift(newProduct);
     this.editingProduct = newProduct;
@@ -54,25 +53,20 @@ this._snackBar.open(message, action);
 
   editProduct(product: any): void {
     this.editingProduct = product;
-
   }
 
   deleteProduct(product: any): void {
-    console.log(product.id)
+    console.log(product.id);
 
-
-    this.apiService.deleteProduct(product.id).subscribe((data:any)=>{
-         console.log(data)
-         this.openSnackBar('Product deleted', 'OK');
-
-    },(error)=>{
-      console.log(error)
-    });
-
-
-
-
-
+    this.apiService.deleteProduct(product.id).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.openSnackBar('Product deleted', 'OK');
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
 
     const index = this.featuredArtworks.indexOf(product);
     if (index !== -1) {
@@ -102,7 +96,7 @@ this._snackBar.open(message, action);
     this.apiService.createProduct(newProduct).subscribe(
       (data: any) => {
         console.log(data);
-        this.openSnackBar('Product was created success', 'OK')
+        this.openSnackBar('Product was created success', 'OK');
       },
       (error) => {
         console.log(error);
@@ -110,7 +104,7 @@ this._snackBar.open(message, action);
     );
     // product.editing = false;
     this.editingProduct = null;
-    this.adding=false;
+    this.adding = false;
 
     // Send PUT request to update the product data on the backend
   }
@@ -130,13 +124,13 @@ this._snackBar.open(message, action);
       price: product.price,
       image: product.image,
       category_id: product.category_id,
-      status: product.status
+      status: product.status,
     };
     console.log(product);
-    this.apiService.updateProduct(product.id,newProduct).subscribe(
+    this.apiService.updateProduct(product.id, newProduct).subscribe(
       (data: any) => {
         console.log(data);
-        this.openSnackBar('Product was editing successfully', 'OK  !!!')
+        this.openSnackBar('Product was editing successfully', 'OK  !!!');
       },
       (error) => {
         console.log(error);
@@ -144,7 +138,7 @@ this._snackBar.open(message, action);
     );
     // product.editing = false;
     this.editingProduct = null;
-    this.adding=false;
+    this.adding = false;
 
     // Send PUT request to update the product data on the backend
   }

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.scss']
+  styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
   orders: any[] = []; // Initialize with an empty array for orders
@@ -14,14 +14,39 @@ export class OrdersComponent implements OnInit {
   ngOnInit(): void {
     // Initialize orders (You can fetch data from your backend API here)
     this.orders = [
-      { id: 1, customerName: 'Customer 1', product: 'Product 1', quantity: 5, editing: false },
-      { id: 2, customerName: 'Customer 2', product: 'Product 2', quantity: 3, editing: false },
-      { id: 3, customerName: 'Customer 3', product: 'Product 3', quantity: 2, editing: false }
-    ]; this.loadOrders();
+      {
+        id: 1,
+        customerName: 'Customer 1',
+        product: 'Product 1',
+        quantity: 5,
+        editing: false,
+      },
+      {
+        id: 2,
+        customerName: 'Customer 2',
+        product: 'Product 2',
+        quantity: 3,
+        editing: false,
+      },
+      {
+        id: 3,
+        customerName: 'Customer 3',
+        product: 'Product 3',
+        quantity: 2,
+        editing: false,
+      },
+    ];
+    this.loadOrders();
   }
 
   addOrder(): void {
-    const newOrder = { id: this.generateOrderId(), customerName: '', product: '', quantity: 0, editing: true };
+    const newOrder = {
+      id: this.generateOrderId(),
+      customerName: '',
+      product: '',
+      quantity: 0,
+      editing: true,
+    };
     this.orders.push(newOrder);
   }
 
@@ -55,16 +80,9 @@ export class OrdersComponent implements OnInit {
     // This could include setting the selected order as active or navigating to its details page
   }
 
-
-
-
-
   // Other properties and constructor here...
 
-
-    // Initialize orders here, e.g., by fetching data from a service
-
-
+  // Initialize orders here, e.g., by fetching data from a service
 
   loadOrders() {
     // Replace with your actual code to fetch orders
@@ -79,9 +97,12 @@ export class OrdersComponent implements OnInit {
     // Replace this with your actual search logic
     if (this.searchQuery) {
       // Filter orders based on the searchQuery
-      this.searchResults = this.orders.filter(order =>
-        order.customerName.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
-        order.product.toLowerCase().includes(this.searchQuery.toLowerCase())
+      this.searchResults = this.orders.filter(
+        (order) =>
+          order.customerName
+            .toLowerCase()
+            .includes(this.searchQuery.toLowerCase()) ||
+          order.product.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
     } else {
       // Clear searchResults if the searchQuery is empty
@@ -93,5 +114,3 @@ export class OrdersComponent implements OnInit {
 
   // Implement search functionality here and populate searchResults array
 }
-
-

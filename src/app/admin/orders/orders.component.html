@@ -1,4 +1,3 @@
-
 <app-admin-header></app-admin-header>
 <!-- <app-admin-sidenav></app-admin-sidenav> -->
 <div>
@@ -6,7 +5,12 @@
   <button (click)="addOrder()">Add Order</button>
 
   <div class="search-box">
-    <input type="text" [(ngModel)]="searchQuery" (input)="searchOrders()" placeholder="Search Orders">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      (input)="searchOrders()"
+      placeholder="Search Orders"
+    />
   </div>
 
   <!-- Display search results here -->
@@ -40,11 +44,26 @@
       <div *ngIf="order.editing">
         <form (submit)="confirmEdit(order)">
           <label>Customer:</label>
-          <input type="text" [(ngModel)]="order.customerName" name="customerName" required>
+          <input
+            type="text"
+            [(ngModel)]="order.customerName"
+            name="customerName"
+            required
+          />
           <label>Product:</label>
-          <input type="text" [(ngModel)]="order.product" name="product" required>
+          <input
+            type="text"
+            [(ngModel)]="order.product"
+            name="product"
+            required
+          />
           <label>Quantity:</label>
-          <input type="number" [(ngModel)]="order.quantity" name="quantity" required>
+          <input
+            type="number"
+            [(ngModel)]="order.quantity"
+            name="quantity"
+            required
+          />
           <button type="submit">Confirm</button>
           <button (click)="cancelEdit(order)">Cancel</button>
         </form>
