@@ -18,8 +18,11 @@ export class AdminLoginComponent {
     private authenticationService: AuthenticationService,
     private router:Router, private formBuilder : FormBuilder) {
     this.loginForm = this.formBuilder.group({
-      username:[ '',[Validators.required,Validators.email]],
-      password: ['',[Validators.required,Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/)]]
+      email:[ '',[Validators.required,Validators.email]],
+      password: ['',[Validators.required,
+        // Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})/)
+      ]
+      ]
     });
   }
 
@@ -30,7 +33,7 @@ export class AdminLoginComponent {
 
   onSubmit() {
      console.log(this.loginForm.value, typeof this.loginForm.value);
-    this.authService.logIn(this.loginForm.value).subscribe(
+    this.authService.adminLogin(this.loginForm.value).subscribe(
       (res: any) => {
         console.log(res);
        // After successful login or registration
