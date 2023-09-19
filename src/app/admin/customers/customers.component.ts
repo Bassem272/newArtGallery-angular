@@ -1,6 +1,7 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Customer } from './../../interfaces/customer';
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api-service';
 
 @Component({
   selector: 'app-customers',
@@ -14,7 +15,7 @@ export class CustomersComponent implements OnInit {
 
   addUserForm: FormGroup;
   editUserForm: FormGroup;
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,private _apiService: ApiService) {
     this.addUserForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
@@ -25,7 +26,15 @@ export class CustomersComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+    this._apiService.getCustomers().subscribe((data: any) => {
+      console.log(data['all Customers'] );
+      this.customers = data['all Customers'];
+    },(error)=>{
+      console.log(error);
+    });
+  }
 
   searchUsers(event: Event): void {
     const target = event.target as HTMLInputElement;

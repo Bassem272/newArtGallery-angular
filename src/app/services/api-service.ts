@@ -241,16 +241,47 @@ export class ApiService {
   // <!---------------------------- order section-->
   // <!---------------------------- order section-->
 
+  getOrders(): Observable<any> {
+    ////>>>>>>>>>>update
+    // Pass headers in the request options
+    const requestOptions = {
+      headers: this.headers,
+      responseType: 'json' as const
+
+    };
+    return this.http.get(
+      'http://127.0.0.1:8000/api/orders/' ,
+      requestOptions
+    );
+  }
+
+
+  changeStatus(id: number): Observable<any> {
+    ////>>>>>>>>>>update
+    // Pass headers in the request options
+    const body={"order_status": "completed"}
+    const requestOptions = {
+      headers: this.headers,
+      responseType: 'json' as const
+
+    };
+    return this.http.put<any>(
+      'http://127.0.0.1:8000/api/orders/' + id, body,
+      requestOptions
+    );
+  }
+
+
   updateOrder(id: number, body: any): Observable<Order> {
     ////>>>>>>>>>>update
     // Pass headers in the request options
     const requestOptions = {
       headers: this.headers,
-      responseType: 'json' as const,
-      body,
+      responseType: 'json' as const
+
     };
-    return this.http.put<Artwork>(
-      'http://127.0.0.1:8000/api/orders/' + id,
+    return this.http.put<any>(
+      'http://127.0.0.1:8000/api/orders/' + id, body,
       requestOptions
     );
   }

@@ -1,9 +1,10 @@
 <app-admin-header></app-admin-header>
 <!-- <app-admin-sidenav></app-admin-sidenav> -->
 <div class="header">
-  <h1>User Management</h1>
+  <h1>Customer Management</h1>
   <div class="search-bar">
-    <input
+    <mat-icon>search-bar</mat-icon>
+    <input id="search"
       type="text"
       placeholder="Search users..."
       (input)="searchUsers($event)"
@@ -17,27 +18,31 @@
     </div>
   </div>
 </div>
-<input type="text" (input)="searchUsers($event)" placeholder="Search Users" />
+
+
+<!-- <input type="text" (input)="searchUsers($event)" placeholder="Search Users" />
 <ul>
   <li *ngFor="let result of searchResults">{{ result }}</li>
-</ul>
+</ul> -->
 
 <div>
-  <h1>Customer and User Management</h1>
-  <button mat-raised-button color="primary" (click)="addCustomer()">
+  <h1>Customers</h1>
+  <!-- <button mat-raised-button color="primary" (click)="addCustomer()">
     Add Customer
-  </button>
-  <button mat-raised-button color="primary" (click)="addUser()">
+  </button> -->
+  <!-- <button mat-raised-button color="primary" (click)="addUser()">
     Add User
-  </button>
+  </button> -->
   <mat-divider></mat-divider>
   <mat-divider></mat-divider>
   <div class="card-container">
     <!-- Customers -->
     <mat-card *ngFor="let customer of customers">
       <mat-card-header>
-        <mat-card-title>{{ customer.name }}</mat-card-title>
-        <mat-card-subtitle>{{ customer.email }}</mat-card-subtitle>
+        <mat-card-title><strong> Name:  </strong>   {{ customer.name }}</mat-card-title>
+        <mat-card-subtitle><strong> Email:  </strong>  {{ customer.email }}</mat-card-subtitle>
+        <mat-card-subtitle><strong>  Phone: </strong>  {{ customer.phone }}</mat-card-subtitle>
+        <mat-card-subtitle><strong>  Address: </strong> {{ customer.address }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <!-- Customer data here -->
