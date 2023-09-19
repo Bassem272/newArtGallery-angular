@@ -27,41 +27,77 @@
       <mat-card-content>
         <h3 class="card-title">Guest checkout</h3>
         <!-- Add Angular Material form controls here -->
-       <!--   <input matInput placeholder="Username" type="text" formControlName="username">
+        <!--   <input matInput placeholder="Username" type="text" formControlName="username">
         <input matInput placeholder="Username" type="text" formControlName="username">
        -->
-        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" >
+        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
           <div class="row">
             <div class="col-md-6">
               <mat-form-field class="full-width">
                 <mat-label>First name</mat-label>
-                <input matInput placeholder="Type here" formControlName="firstName"/>
-                <mat-error *ngIf="checkoutForm.get('firstName')?.hasError('required')" > fist name is required</mat-error>
-
+                <input
+                  matInput
+                  placeholder="Type here"
+                  formControlName="firstName"
+                />
+                <mat-error
+                  *ngIf="checkoutForm.get('firstName')?.hasError('required')"
+                >
+                  fist name is required</mat-error
+                >
               </mat-form-field>
             </div>
             <div class="col-md-6">
               <mat-form-field class="full-width">
                 <mat-label>Last name</mat-label>
-                <input matInput placeholder="Type here" formControlName="lastName"/>
-                <mat-error *ngIf="checkoutForm.get('lastName')?.hasError('required')" > last name is required</mat-error>
+                <input
+                  matInput
+                  placeholder="Type here"
+                  formControlName="lastName"
+                />
+                <mat-error
+                  *ngIf="checkoutForm.get('lastName')?.hasError('required')"
+                >
+                  last name is required</mat-error
+                >
               </mat-form-field>
             </div>
             <div class="col-md-6">
               <mat-form-field class="full-width">
                 <mat-label>Phone</mat-label>
-                <input matInput placeholder="Type here" formControlName="phone" />
-                <mat-error *ngIf="checkoutForm.get('phone')?.hasError('required')" > phone is required</mat-error>
+                <input
+                  matInput
+                  placeholder="Type here"
+                  formControlName="phone"
+                />
+                <mat-error
+                  *ngIf="checkoutForm.get('phone')?.hasError('required')"
+                >
+                  phone is required</mat-error
+                >
               </mat-form-field>
             </div>
             <div class="col-md-6">
               <mat-form-field class="full-width">
                 <mat-label>Email</mat-label>
-                <input matInput placeholder="example@gmail.com" formControlName="email" />
-                <mat-error *ngIf="checkoutForm.get('email')?.hasError('pattern')" > not correct email format </mat-error>
-                <mat-error *ngIf="checkoutForm.get('email')?.hasError('required')" > email is required</mat-error>
-      <mat-error *ngIf="checkoutForm.get('email')?.hasError('email')">Invalid email format.</mat-error>
-
+                <input
+                  matInput
+                  placeholder="example@gmail.com"
+                  formControlName="email"
+                />
+                <mat-error
+                  *ngIf="checkoutForm.get('email')?.hasError('pattern')"
+                >
+                  not correct email format
+                </mat-error>
+                <mat-error
+                  *ngIf="checkoutForm.get('email')?.hasError('required')"
+                >
+                  email is required</mat-error
+                >
+                <mat-error *ngIf="checkoutForm.get('email')?.hasError('email')"
+                  >Invalid email format.</mat-error
+                >
               </mat-form-field>
             </div>
           </div>
@@ -78,7 +114,7 @@
                 class="order-item"
                 *ngFor="let item of orderItems; let i = index"
               >
-              <mat-divider></mat-divider>
+                <mat-divider></mat-divider>
                 <mat-card class="order-item-card">
                   <mat-card-content>
                     <div
@@ -89,11 +125,24 @@
                         <p>Price: ${{ item.price }}</p>
                       </div>
                       <div class="quantity">
-                        <button mat-button mat-raised-button color="primary" (click)="incrementQuantity(item)">
+                        <button
+                          mat-button
+                          mat-raised-button
+                          color="primary"
+                          (click)="incrementQuantity(item, $event)"
+                        >
                           <mat-icon>add</mat-icon>
                         </button>
 
-                        <mat-label style="color:crimson; font-size: large;margin:0px 5px 5px 0px;padding:0px 5px 5px 0px;">Quantity: </mat-label>
+                        <mat-label
+                          style="
+                            color: crimson;
+                            font-size: large;
+                            margin: 0px 5px 5px 0px;
+                            padding: 0px 5px 5px 0px;
+                          "
+                          >Quantity:
+                        </mat-label>
                         <!-- <mat-form-field>
 
                            <input
@@ -102,13 +151,32 @@
                             (ngModelChange)="updateSubtotal(item)"
                           />
                         </mat-form-field> -->
-                        <span style="color:crimson; font-size: large;margin:0px 5px 5px 0px;">{{ item.stock }}</span>
-                        <button mat-raised-button color="accent" (click)="decrementQuantity(item)">
+                        <span
+                          style="
+                            color: crimson;
+                            font-size: large;
+                            margin: 0px 5px 5px 0px;
+                          "
+                          >{{ item.stock }}</span
+                        >
+                         <!-- type="click" -->
+                        <button
+
+                          mat-raised-button
+                          color="accent"
+                          (click)="decrementQuantity(item, $event)"
+                        >
                           <mat-icon>remove</mat-icon>
                         </button>
                       </div>
                       <div>
-                        <p>Subtotal: {{ item.price * item.stock | currency:'USD':'symbol' }}</p>
+                        <p>
+                          Subtotal:
+                          {{
+                            item.price * item.stock
+                              | currency : "USD" : "symbol"
+                          }}
+                        </p>
                       </div>
                     </div>
                   </mat-card-content>
@@ -132,9 +200,17 @@
             <mat-card-content>
               <div class="d-flex justify-content-between">
                 <p>Total price:</p>
-                <p class="fw-bold" mat-color-primary
-                style="color:crimson; font-size: large;margin:0px 5px 5px 0px;">
-                {{ getTotalPrice() | currency:'USD':'symbol' }}</p>
+                <p
+                  class="fw-bold"
+                  mat-color-primary
+                  style="
+                    color: crimson;
+                    font-size: large;
+                    margin: 0px 5px 5px 0px;
+                  "
+                >
+                  {{ getTotalPrice() | currency : "USD" : "symbol" }}
+                </p>
               </div>
             </mat-card-content>
           </mat-card>
@@ -149,7 +225,11 @@
             <div class="col-md-6">
               <mat-form-field class="full-width">
                 <mat-label>Address</mat-label>
-                <input matInput placeholder="Type here" formControlName="address" />
+                <input
+                  matInput
+                  placeholder="Type here"
+                  formControlName="address"
+                />
               </mat-form-field>
             </div>
             <div class="col-md-6">
@@ -166,7 +246,7 @@
             <div class="col-md-6">
               <mat-form-field class="full-width">
                 <mat-label>Zip</mat-label>
-                <input matInput  formControlName="zip" />
+                <input matInput formControlName="zip" />
               </mat-form-field>
             </div>
           </div>

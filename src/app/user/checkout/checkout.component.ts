@@ -91,18 +91,20 @@ getTotalPrice(): number {
 
 
   updateSubtotal(item: any): void {
-    item.subtotal = Math.round(item.price * item.quantity);
+    item.subtotal = Math.round(item.price * item.stock);
     this.calculateTotal();
   }
 
-  incrementQuantity(item: any): void {
-    item.quantity += 1;
+  incrementQuantity(item: any,event:Event): void {
+    event.preventDefault();
+    item.stock += 1;
     this.updateSubtotal(item);
   }
 
-  decrementQuantity(item: any): void {
-    if (item.quantity > 1) {
-      item.quantity -= 1;
+  decrementQuantity(item: any , e :Event): void {
+    e.preventDefault();
+    if (item.stock > 1) {
+      item.stock -= 1;
       this.updateSubtotal(item);
     }
   }
