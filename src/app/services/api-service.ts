@@ -29,7 +29,7 @@ export class ApiService {
   // Define headers using HttpHeaders
   token = '2|laravel_sanctum_OHHRthNNEsL7zIyff85uhRqH9JTLaOupBrfILAWqc8d34ef3';
   headers = new HttpHeaders({
-    'Content-Type': 'application/json',
+
     'Authorization': 'Bearer 9|IBvKkmX4hru69Awyw3zO09l5UK1WGhLs1zqLnObT08706d78',
     'role': 'admin'
   });
@@ -48,13 +48,13 @@ export class ApiService {
       requestOptions
     );
   }
-  getCustomer(id: number): Observable<Customer> {
+  getCustomer(id: number): Observable<any> {
     // Pass headers in the request options
     const requestOptions = {
       headers: this.headers,
-      responseType: 'json' as const,
+
     };
-    return this.http.get<Customer>(
+    return this.http.get(
       'http://127.0.0.1:8000/api/customers/' + id,
       requestOptions
     );

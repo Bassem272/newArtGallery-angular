@@ -12,16 +12,16 @@ export class LogoutComponent {
   constructor(private authService: AuthService,private authenticationService: AuthenticationService,private localStorageService: LocalStorageService) {}
 
   logout() {
-    // let _token = this.localStorageService.get('token');
-    // console.log('before logout',_token);
+    let _token = this.localStorageService.get('token');
+    console.log('before logout',_token);
     this.authService.logout().subscribe((data:any) =>{
       console.log(data);
-      // this.localStorageService.remove('token');
-      // let _token = this.localStorageService.get('token');
-      // console.log('after logout',_token);
+      this.localStorageService.remove('token');
+      let _token = this.localStorageService.get('token');
+      console.log('after logout',_token);
       // this.router.navigate(['/auth/login']);
-      // this.localStorageService.remove('user');
-      // this.authenticationService.logout();
+      this.localStorageService.remove('user');
+      this.authenticationService.logout();
     },(error)=>{
 
       console.log(error);

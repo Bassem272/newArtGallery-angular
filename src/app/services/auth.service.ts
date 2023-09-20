@@ -62,14 +62,14 @@ export class AuthService {
 
   logout(): Observable<any> {
     // Include the token in the request headers
-    // let token = this.localStorageService.get('token');
+    let token = this.localStorageService.get('token');
     // Include the token in the request headers
-    const headerss = new HttpHeaders({
-      Authorization: 'Bearer 27|OHLfgEbL15IdfuXphZux473zFwVztGMnJPcPb3pU6c77e72a',
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer '+token,
   role: 'customer'
     });
     // Pass headers in the request options
-    const requestOptions = { headers: headerss };
+    const requestOptions = { headers: headers};
     return this.http.post('http://127.0.0.1:8000/api/logout',{}, requestOptions);
   }
 

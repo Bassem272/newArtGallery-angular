@@ -10,6 +10,7 @@ import { ApiService } from 'src/app/services/api-service';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+  customer: Customer | undefined;
   // Define a user object
 
   // constructor(private ApiService: ApiService) { }
@@ -19,7 +20,7 @@ export class ProfileComponent implements OnInit {
     // this.ApiService.getUserData().subscribe((userData: any) => {
     //   this.user = userData;
     // });
-    this.getCustomers();
+    this.getCustomer();
     // this.createProduct();
 
     this.searchByName(); //   // Your user data here
@@ -37,10 +38,14 @@ export class ProfileComponent implements OnInit {
   // getCustomerByName(name){
   //   return this.http.get(this.url+'/customers/name/'+name);
   // }
+id!:number;
+  getCustomer() {
 
-  getCustomers() {
-    this.ApiService.getCustomers().subscribe((data: Customer[]) => {
-      this.customers = data;
+    const user = localStorage.getItem('user');
+
+
+    this.ApiService.getCustomer(this.id).subscribe((data: Customer) => {
+      this.customer = data;
       console.log(this.customers);
     });
   }
