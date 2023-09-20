@@ -16,11 +16,11 @@
           Password must contain at least 8 characters, including letters and numbers.
         </mat-error>
       </mat-form-field>
-      <button mat-raised-button color="primary" type="submit" (click)="login()" routerLink="../../user/home">
+      <button mat-raised-button color="primary" type="submit" (click)="login()" routerLink="/user/home">
         Login
       </button>
     </form>
-   <div class="register"> <a id="resetPsd" href="">forget password?</a><a id="resetPsd" routerLink="../register">register ?</a>
+   <div class="register"> <a id="resetPsd" href="">forget password?</a><a id="resetPsd" routerLink="/auth/register">register ?</a>
   </div>
 </mat-card>
 <mat-card *ngIf="hasErrors()"class="error-card">
