@@ -19,32 +19,41 @@ export class AuthService {
     Authorization: 'Bearer 9|IBvKkmX4hru69Awyw3zO09l5UK1WGhLs1zqLnObT08706d78',
     role: 'admin',
   });
+
+
+
   register(data: any): Observable<any> {
+    // const body = {
+    //   name: data.name,
+    //   email: data.email,
+    //   password: data.password,
+    // };
+
     const body = {
-      name: data.name,
-      email: data.email,
-      password: data.password,
+      "name": "assamaer",
+      "email": "assamaer@gmail.com",
+      "password": "Asdfg1234"
     };
     // Pass headers in the request options
-    const requestOptions = { headers: Headers };
-    return this.http.post('http://127.0.0.1:8000/register', body);
+    // const requestOptions = { headers: Headers };
+    return this.http.post('http://127.0.0.1:8000/api/register', body);
   }
 
   logIn(data: any): Observable<any> {
-    let customer = this.localStorageService.get('customer');
+    // let customer = this.localStorageService.get('customer');
 
-    // Include the token in the request headers
-    const headers = new HttpHeaders({
-      // Authorization: `Bearer ${token}`,
-      role: customer.role,
-    });
-    // Pass headers in the request options
+    // // Include the token in the request headers
+    // const headers = new HttpHeaders({
+    //   // Authorization: `Bearer ${token}`,
+    //   role: customer.role,
+    // });
+    // // Pass headers in the request options
     const body = {
       "email": "assewwwo@Sana.com",
     "password": "asseemm"
     };
     // Pass headers in the request options
-    const requestOptions = { headers: this.headers };
+    // const requestOptions = { headers: headers };
     return this.http.post('http://127.0.0.1:8000/api/login', body);
   }
 
@@ -60,7 +69,7 @@ export class AuthService {
     const requestOptions = { headers: headers };
     return this.http.post('http://127.0.0.1:8000/logout', requestOptions);
   }
-  
+
   adminLogin(data: any): Observable<any> {
     const headers = new HttpHeaders({
       role: 'admin',

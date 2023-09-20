@@ -34,7 +34,7 @@ export class RegisterComponent {
 
 
 
-  
+
   onSubmit() {
     // if (this.registerForm && this.registerForm.valid) {
     //   // Your form submission logic here
@@ -43,8 +43,8 @@ export class RegisterComponent {
     this.authService.register(this.registerForm.value).subscribe(
       (res: any) => {
         console.log(res);
-        this.router.navigate(['/login']);
-        this.localStorageService.set('customer', res.customer);
+        // this.router.navigate(['/login']);
+        // this.localStorageService.set('customer', res.customer);
       },
       (err) => {
         console.log(err);
