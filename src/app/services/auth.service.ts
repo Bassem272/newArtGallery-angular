@@ -22,24 +22,20 @@ export class AuthService {
 
 
 
-  register(data: any): Observable<any> {
-    // const body = {
-    //   name: data.name,
-    //   email: data.email,
-    //   password: data.password,
-    // };
+  register(bodyy: any): Observable<any> {
 
-    const body = {
-      "name": "assamaer",
-      "email": "assamaer@gmail.com",
-      "password": "Asdfg1234"
-    };
+
+    // const body = {
+    //   "name": "assamaert",
+    //   "email": "assamater@gmail.com",
+    //   "password": "Asdfg1234"
+    // };
     // Pass headers in the request options
     // const requestOptions = { headers: Headers };
-    return this.http.post('http://127.0.0.1:8000/api/register', body);
+    return this.http.post('http://127.0.0.1:8000/api/register', bodyy);
   }
 
-  logIn(data: any): Observable<any> {
+  logIn(_data: any): Observable<any> {
     // let customer = this.localStorageService.get('customer');
 
     // // Include the token in the request headers
@@ -54,20 +50,27 @@ export class AuthService {
     };
     // Pass headers in the request options
     // const requestOptions = { headers: headers };
-    return this.http.post('http://127.0.0.1:8000/api/login', body);
+    return this.http.post('http://127.0.0.1:8000/api/login', _data);
   }
 
-  logout(data: any): Observable<any> {
+
+//   {email: 'sss@sss.com', password: 'Asdf1234'} 'object'
+// login.component.ts:48 {message: 'Login successful',
+//  token: '23|KBCtlgmTLc871M3xiLA7agm1cJm6kvFZHEUPILqN2e16bb4b',
+//   user: {…}}message: "Login successful"token: "23|KBCtlgmTLc871M3xiLA7agm1cJm6kvFZHEUPILqN2e16bb4b"user: address: nullcode: nullcreated_at: "2023-09-20T18:28:01.000000Z"email: "sss@sss.com"email_verified_at: nullid: 217name: "asssssss"phone: nullrole: "customer"updated_at: "2023-09-20T18:28:01.000000Z"[[Prototype]]: Object[[Prototype]]: Object
+// login.component.ts:51 23|KBCtlgmTLc871M3xiLA7agm1cJm6kvFZHEUPILqN2e16bb4b
+
+  logout(): Observable<any> {
     // Include the token in the request headers
-    let token = this.localStorageService.get('token');
+    // let token = this.localStorageService.get('token');
     // Include the token in the request headers
-    const headers = new HttpHeaders({
-      Authorization: 'Bearer ' + token,
-      role: 'customer',
+    const headerss = new HttpHeaders({
+      Authorization: 'Bearer 27|OHLfgEbL15IdfuXphZux473zFwVztGMnJPcPb3pU6c77e72a',
+  role: 'customer'
     });
     // Pass headers in the request options
-    const requestOptions = { headers: headers };
-    return this.http.post('http://127.0.0.1:8000/logout', requestOptions);
+    const requestOptions = { headers: headerss };
+    return this.http.post('http://127.0.0.1:8000/api/logout',{}, requestOptions);
   }
 
   adminLogin(data: any): Observable<any> {

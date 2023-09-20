@@ -40,11 +40,20 @@ export class RegisterComponent {
     //   // Your form submission logic here
     // }
     console.log(this.registerForm.value, typeof this.registerForm.value);
-    this.authService.register(this.registerForm.value).subscribe(
+
+    const body = {
+      "name": this.registerForm.value.username,
+      "email": this.registerForm.value.email,
+      "password": this.registerForm.value.password
+    };
+    console.log(body);
+    this.authService.register(body).subscribe(
       (res: any) => {
         console.log(res);
         // this.router.navigate(['/login']);
-        // this.localStorageService.set('customer', res.customer);
+      //   this.localStorageService.set('customer', res.customer);
+        this.localStorageService.set('token', res.token);
+        console.log(this.localStorageService.get('token'));
       },
       (err) => {
         console.log(err);

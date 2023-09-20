@@ -47,7 +47,9 @@ export class LoginComponent {
       (res: any) => {
         console.log(res);
         // After successful login or registration
-        // this.localStorageService.set('token', res.token);
+        this.localStorageService.set('token', res.token);
+        console.log(this.localStorageService.get('token'));
+        this.localStorageService.set('customer', res.customer);
         // this.localStorageService.set('customer', JSON.stringify(res.customer));
         // this.router.navigate(['/user/home']);
       },
