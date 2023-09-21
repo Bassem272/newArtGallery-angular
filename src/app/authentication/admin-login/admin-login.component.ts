@@ -18,8 +18,8 @@ export class AdminLoginComponent {
     private authenticationService: AuthenticationService,
     private router:Router, private formBuilder : FormBuilder) {
     this.loginForm = this.formBuilder.group({
-      email:[ '',[Validators.required,Validators.email]],
-      password: ['',[Validators.required,
+      email:[ 'asso@Sana.com',[Validators.required,Validators.email]],
+      password: ['Assooo12',[Validators.required,
         // Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})/)
       ]
       ]

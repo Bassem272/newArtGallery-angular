@@ -49,10 +49,13 @@ export class RegisterComponent {
         //   this.localStorageService.set('customer', res.customer);
         this.localStorageService.set('token', res.token);
         this.localStorageService.set('user', res.user);
-      
+
         console.log(this.localStorageService.get('token'));
         console.log(this.localStorageService.get('user'));
-        // this.router.navigate(['/auth/login']);
+        if(res){
+          this.router.navigate(['/auth/login']);
+
+        }
       },
       (err) => {
         console.log(err);

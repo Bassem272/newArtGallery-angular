@@ -70,7 +70,11 @@ export class LoginComponent {
         this.localStorageService.set('token', res.token);
 
         console.log(this.localStorageService.get('token'));
-        // this.router.navigate(['/user/home']);
+        if(res      ){
+
+          this.router.navigate(['/user/home']);
+
+        }
       },
       (err: any) => {
         console.log(err);

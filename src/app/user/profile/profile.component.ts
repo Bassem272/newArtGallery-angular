@@ -3,6 +3,7 @@ import { Artwork } from 'src/app/interfaces/artwork';
 import { Customer } from 'src/app/interfaces/customer';
 import { User } from 'src/app/interfaces/user';
 import { ApiService } from 'src/app/services/api-service';
+import { LocalStorageService } from 'src/app/services/localStorage.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,26 +11,40 @@ import { ApiService } from 'src/app/services/api-service';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  customer: Customer | undefined;
+  customer: User={
+    "name":"bassem",
+    "email": "bassem@gmail.com",
+    "password": "123456",
+    "phone": "01000000000",
+    "address": "123456",
+    "role": "customer"
+  }
+
   // Define a user object
 
-  // constructor(private ApiService: ApiService) { }
+  // constructor(private ApiService: ApiService) {
+    //
+  // }
 
   ngOnInit(): void {
     // Fetch user data asynchronously using the user service
     // this.ApiService.getUserData().subscribe((userData: any) => {
     //   this.user = userData;
     // });
-    this.getCustomer();
-    // this.createProduct();
+    // this.getCustomer();
+    // // this.createProduct();
 
-    this.searchByName(); //   // Your user data here
-    setTimeout(() => {
-      // this.user = {
-      // };
-    }, 2000); // Simulating a 2-second delay for data loading
+    // this.searchByName(); //   // Your user data here
+    // setTimeout(() => {
+    //   // this.user = {
+    //   // };
+    // }, 2000); // Simulating a 2-second delay for data loading
   }
-  constructor(private ApiService: ApiService) {}
+  constructor(private ApiService: ApiService,
+    private localStorageService: LocalStorageService) {
+
+      this.getCustomer();
+    }
 
   // getCustomerById(id){
   //   // return this.http.get(this.url+'/customers/'+id);
@@ -38,16 +53,20 @@ export class ProfileComponent implements OnInit {
   // getCustomerByName(name){
   //   return this.http.get(this.url+'/customers/name/'+name);
   // }
-id!:number;
+// id!:number;
   getCustomer() {
 
-    const user = localStorage.getItem('user');
+    const user =this.localStorageService.get('user');
+    this.customer = user;
+
+    const id = user.id;
+    console.log(id);
 
 
-    this.ApiService.getCustomer(this.id).subscribe((data: Customer) => {
-      this.customer = data;
-      console.log(this.customers);
-    });
+    // this.ApiService.getCustomer(id).subscribe((data: any) => {
+    //   this.customer = data;
+    //   console.log(data);
+    // });
   }
   // product: Artwork = {
   //   name: 'Product Name',

@@ -10,16 +10,28 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private localStorageService: LocalStorageService
-  ) {}
+  ) {this.getTokenandUserid();}
 
-  // Define headers using HttpHeaders
-  token = '2|laravel_sanctum_OHHRthNNEsL7zIyff85uhRqH9JTLaOupBrfILAWqc8d34ef3';
-  headers = new HttpHeaders({
+  getTokenandUserid(){
+    const  token = this.localStorageService.get('token');
+    const user  = this.localStorageService.get('user');
 
-    Authorization: 'Bearer 9|IBvKkmX4hru69Awyw3zO09l5UK1WGhLs1zqLnObT08706d78',
-    role: 'admin',
-  });
+     const role= user.role;
+     console.log( role)
+     console.log(token);
+     console.log(user)
+     const  headerso = new HttpHeaders({
 
+        'Authorization': 'Bearer '+token,
+        'role': role
+      });
+      console.log(headerso)
+    return headerso;
+
+
+    }
+
+    headers = this.getTokenandUserid();
 
 
   register(bodyy: any): Observable<any> {
