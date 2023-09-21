@@ -1,9 +1,17 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api-service';
 import { Component } from '@angular/core';
 
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
 import { CartService } from 'src/app/services/cart.service';
+import { LocalStorageService } from 'src/app/services/localStorage.service';
 // import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-home',
@@ -19,23 +27,36 @@ import { CartService } from 'src/app/services/cart.service';
   ],
 })
 export class HomeComponent {
+  constructor(
+    private HttpClient: HttpClient,
+    private apiService: ApiService,
+    private cartService: CartService,
+    private router: Router,
+    private localStorageService: LocalStorageService
+  ) {}
+  // headers = new HttpHeaders({
+
+  //   'Authorization': 'Bearer '+this.token,
+  //   'role': this.role
+  // });
 
 
-  constructor(private apiService: ApiService,private cartService: CartService,private router:Router) {}
+
+
+
 
   addToCart(product: any): void {
     this.cartService.addToCart(product);
     console.log(product);
-    const carts= this.cartService.getCart()
+    const carts = this.cartService.getCart();
     console.log(carts);
   }
 
   removeFromCart(product: any): void {
     this.cartService.removeFromCartById(product.id);
-
   }
 
-   ngOnInit(): void {
+  ngOnInit(): void {
     // Make the API request to fetch featured artworks here
     this.fetchFeaturedArtworks();
   }

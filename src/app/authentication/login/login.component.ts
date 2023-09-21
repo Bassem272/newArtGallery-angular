@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/authentication-service';
+import { ApiService } from 'src/app/services/api-service';
 import { AuthService } from 'src/app/services/auth.service';
 import { LocalStorageService } from 'src/app/services/localStorage.service';
 
@@ -16,21 +17,40 @@ export class LoginComponent {
   loginForm: FormGroup;
 
   constructor(
+    private apiService: ApiService,
     private authService: AuthService,
     private localStorageService: LocalStorageService,
     private authenticationService: AuthenticationService,
     private router: Router,
     private formBuilder: FormBuilder
   ) {
+
+   const user = this.localStorageService.get('user')
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+    email: [`${user.email}`, [Validators.required, Validators.email]],
       password: [
-        '',
+        'Asdf1234',
         [
           Validators.required,
           Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/),
         ],
       ],
+    });
+    this.getTokenandUserid();
+  }
+
+  getTokenandUserid() {
+    const token = this.localStorageService.get('token');
+    console.log(token);
+    const user = this.localStorageService.get('user');
+    const user_id = user.id;
+    this.apiService.getUser(user_id).subscribe((data: any) => {
+      console.log(data);
+      const user = data;
+      this.localStorageService.set('user', user);
+      console.log(this.localStorageService.get('user'));
+      const role = data.role;
+      console.log(role, data.id);
     });
   }
 
@@ -48,9 +68,8 @@ export class LoginComponent {
         console.log(res);
         // After successful login or registration
         this.localStorageService.set('token', res.token);
+
         console.log(this.localStorageService.get('token'));
-        this.localStorageService.set('customer', res.customer);
-        // this.localStorageService.set('customer', JSON.stringify(res.customer));
         // this.router.navigate(['/user/home']);
       },
       (err: any) => {

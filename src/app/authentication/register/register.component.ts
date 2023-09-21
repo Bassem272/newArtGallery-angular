@@ -1,3 +1,4 @@
+import { User } from 'src/app/interfaces/user';
 import { LocalStorageService } from './../../services/localStorage.service';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -30,11 +31,6 @@ export class RegisterComponent {
     });
   }
 
-
-
-
-
-
   onSubmit() {
     // if (this.registerForm && this.registerForm.valid) {
     //   // Your form submission logic here
@@ -42,18 +38,21 @@ export class RegisterComponent {
     console.log(this.registerForm.value, typeof this.registerForm.value);
 
     const body = {
-      "name": this.registerForm.value.username,
-      "email": this.registerForm.value.email,
-      "password": this.registerForm.value.password
+      name: this.registerForm.value.username,
+      email: this.registerForm.value.email,
+      password: this.registerForm.value.password,
     };
     console.log(body);
     this.authService.register(body).subscribe(
       (res: any) => {
         console.log(res);
-        // this.router.navigate(['/login']);
-      //   this.localStorageService.set('customer', res.customer);
+        //   this.localStorageService.set('customer', res.customer);
         this.localStorageService.set('token', res.token);
+        this.localStorageService.set('user', res.user);
+      
         console.log(this.localStorageService.get('token'));
+        console.log(this.localStorageService.get('user'));
+        // this.router.navigate(['/auth/login']);
       },
       (err) => {
         console.log(err);

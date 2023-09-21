@@ -21,18 +21,44 @@ export class ApiService {
     image: 'image-url.jpg',
   };
 
+
   constructor(
     private http: HttpClient,
     private localStorageService: LocalStorageService
-  ) {}
+  ) {
+    this.getTokenandUserid();
 
-  // Define headers using HttpHeaders
-  token = '2|laravel_sanctum_OHHRthNNEsL7zIyff85uhRqH9JTLaOupBrfILAWqc8d34ef3';
-  headers = new HttpHeaders({
+  }
 
-    'Authorization': 'Bearer 9|IBvKkmX4hru69Awyw3zO09l5UK1WGhLs1zqLnObT08706d78',
-    'role': 'admin'
+getTokenandUserid(){
+const  token = this.localStorageService.get('token');
+const user  = this.localStorageService.get('user');
+
+ const role= user.role;
+ console.log( role)
+ console.log(token);
+ console.log(user)
+ const  headerso = new HttpHeaders({
+
+    'Authorization': 'Bearer '+token,
+    'role': role
   });
+  console.log(headerso)
+return headerso;
+
+
+}
+
+headers = this.getTokenandUserid();
+
+
+
+
+
+
+
+  // token = '2|laravel_sanctum_OHHRthNNEsL7zIyff85uhRqH9JTLaOupBrfILAWqc8d34ef3';
+
 
   // <!---------------------------- customer section-->
   // <!---------------------------- customer section-->
@@ -196,7 +222,7 @@ export class ApiService {
       responseType: 'json' as const,
     };
     return this.http.get<User>(
-      'http://127.0.0.1:8000/api/products/' + id,
+      'http://127.0.0.1:8000/api/users/' + id,
       requestOptions
     );
   }
